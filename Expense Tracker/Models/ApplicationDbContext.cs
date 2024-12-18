@@ -4,7 +4,7 @@ namespace Expense_Tracker.Models
 {
     public class ApplicationDbContext:DbContext
     {
-        public ApplicationDbContext()
+        public ApplicationDbContext(DbContextOptions options):base(options) 
         {
 
         }
