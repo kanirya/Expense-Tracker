@@ -45,43 +45,43 @@
 	</header>
 
 
-
 	<div class="main-content">
-	<div class="container mt-5">
-		<main role="main" class="pb-3">
-			@if(ViewData["isDashboard"]==null){
-					<div class="row">
-
-						<div class="col-md-7">
-							<div class="d-flex flex-column mb-5">
-								<div class="d-flex mb-1">
-									<div class="flex-grow-1">
-										<h3 class="fw-bold">@ViewData["PageTitle"]</h3>
-									</div>
-									<div>
-										@if (@ViewData["PageActionText"] != null)
-										{
-											<a class="btn btn-success" asp-controller="@ViewData["PageController"]" asp-action="@ViewData["PageAction"]">
-												@ViewData["PageActionText"]
-											</a>
-										}
+		<div class="container mt-5">
+			<div class="row justify-content-center">
+				<div class="@(ViewData["isDashboard"] == null?"col-md-10":"col-md-12")">
+					<main role="main" class="pb-3">
+						@if (ViewData["isDashboard"] == null)
+						{
+							<div class="row">
+								<div class="col-md-7">
+									<div class="d-flex flex-column mb-5">
+										<div class="d-flex mb-1">
+											<div class="flex-grow-1">
+												<h3 class="fw-bold">@ViewData["PageTitle"]</h3>
+											</div>
+											<div>
+												@if (ViewData["PageActionText"] != null)
+												{
+													<a class="btn btn-success" href="@ViewData["PageActionUrl"]">
+														@ViewData["PageActionText"]
+													</a>
+												}
+											</div>
+										</div>
+										<ejs-breadcrumb id="breadcrumb"
+														separatorTemplate="@Html.Raw("<span class='fa-solid fa-angle-right'></span>")"></ejs-breadcrumb>
 									</div>
 								</div>
-								<ejs-breadcrumb id="breadcrumb"
-												separatorTemplate="@Html.Raw("<span class='fa-solid fa-angle-right'></span>")"></ejs-breadcrumb>
-								@*breadcrumb*@
 							</div>
-						</div>
-					</div>
-			}
-		
-
-			@RenderBody()
-		</main>
-	</div>
+						}
+						@RenderBody()
+					</main>
+				</div>
+			</div>
+		</div>
 	</div>
 
-
+	</div>
 	<script src="~/lib/jquery/dist/jquery.min.js"></script>
 	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 	<script src="~/js/site.js" asp-append-version="true"></script>
