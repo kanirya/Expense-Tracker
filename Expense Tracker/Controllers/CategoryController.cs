@@ -57,6 +57,7 @@ namespace Expense_Tracker.Controllers
 
                 return RedirectToAction(nameof(Index));
             }
+         
             return View(category);
         }
 
