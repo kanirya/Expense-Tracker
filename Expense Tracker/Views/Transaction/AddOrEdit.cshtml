@@ -17,22 +17,21 @@
 					<ejs-datepicker id="date" ejs-for="Date"
 									placeholder="Date" floatLabelType="Always"
 									format="MMM-dd-yy"></ejs-datepicker>
-					<span asp-validation-for="Date" class="text-danger"></span>
 				</div>
 				<div class="mb-3">
 					<ejs-dropdownlist id="ddlCategory" ejs-for="CategoryId" dataSource="@ViewBag.Categories" placeholder="CategoryId"
 									  floatLabelType="Always" allowFiltering="true"ignoreAccent="true"filterType="Contains" popupHeight="220px">
 						<e-dropdownlist-fields value="CategoryId" text="TitleWithIcon"></e-dropdownlist-fields>
 					</ejs-dropdownlist>
+					<span asp-validation-for="CategoryId" class="text-danger fs-6"></span>
 				</div>
 				<div class="mb-3">
 					<ejs-numerictextbox id="Amount" ejs-for="Amount" placeholder="Amount" floatLabelType="Always" step="10" min="0" format="c0" ></ejs-numerictextbox>
-					<span asp-validation-for="Amount" class="text-danger"></span>
+					<span asp-validation-for="Amount" class="text-danger fs-6"></span>
 				</div>
 				<div class="mb-3">
 					<div class="mb-3">
 						<ejs-textbox id="note" placeholder="Note" ejs-for="Note" multiline="true" floatLabelType="Always"></ejs-textbox>
-						<span asp-validation-for="Note" class="text-danger"></span>
 					</div>
 				</div>
 
@@ -46,12 +45,4 @@
 		</div>
 	</div>
 </div>
-
-
-@section Scripts {
-	@{
-		await Html.RenderPartialAsync("_ValidationScriptsPartial");
-		<partial name="_ValidationScriptsPartial" />
-	}
-}
 
