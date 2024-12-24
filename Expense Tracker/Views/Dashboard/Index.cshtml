@@ -60,7 +60,7 @@
 				<e-accumulation-series-collection>
 					<e-accumulation-series dataSource="@ViewBag.DoughnutChartData"
 										   xName="categoryTitleWithIcon" yName="amount" legendShape="Circle" innerRadius="80px"
-										   palettes=@(new string[]{"#0e8d76","#4a4b219","#cb9b00","#0454b5","#7b0a0a"})>
+										   palettes=@(new string[]{"#0e8d76","#cb9b00","#0454b5","#7b0a0a"})>
 						<e-accumulationseries-datalabel name="formattedAmount"
 														visible="true"></e-accumulationseries-datalabel>
 					</e-accumulation-series>
@@ -80,31 +80,70 @@
 				<h5 class="fw-bold">Income vs Expense</h5>
 			</div>
 			<ejs-chart id="spline-chart"
-			palettes=@(new string[]{"#54ffa9","#ffe91a"})>
+					   palettes=@(new string[]{"#54ffa9","#ffe91a"})>
 
-				<e-chart-primaryxaxis  valueType="Category">
+				<e-chart-primaryxaxis valueType="Category">
 					<e-majorgridlines width="0"></e-majorgridlines>
 					<e-majorticklines width="0"></e-majorticklines>
-					
+
 				</e-chart-primaryxaxis>
 				<e-chart-primaryyaxis>
 					<e-majorgridlines width="1" color="#32414d" dashArray="3,5"></e-majorgridlines>
 					<e-majorticklines width="0"></e-majorticklines>
+					<e-linestyle width="0"></e-linestyle>
 				</e-chart-primaryyaxis>
 				<e-chart-chartarea>
 					<e-chartarea-border width="0"></e-chartarea-border>
 				</e-chart-chartarea>
 				<e-series-collection>
 					<e-series dataSource="@ViewBag.SplineChartData" xName="day" width="3"
-					yName="income"name="Income" type="@Syncfusion.EJ2.Charts.ChartSeriesType.Spline">
+							  yName="income" name="Income" type="@Syncfusion.EJ2.Charts.ChartSeriesType.Spline">
 					</e-series>
 					<e-series dataSource="@ViewBag.SplineChartData" xName="day" width="3"
 							  yName="expense" name="Expense" type="@Syncfusion.EJ2.Charts.ChartSeriesType.Spline">
 					</e-series>
 				</e-series-collection>
+				<e-chart-legendsettings position="Top" alignment="Far">
+					<e-legendsettings-textstyle size="1rem"></e-legendsettings-textstyle>
+
+				</e-chart-legendsettings>
+				<e-chart-tooltipsettings enable shared></e-chart-tooltipsettings>
+
+
 			</ejs-chart>
-		
+
 		</div>
 	</div>
 
 </div>
+
+<div class="row mb-5">
+
+	<div class="col-md-6 ">
+		<div class="widget">
+			<div class="p-4">
+				<h5 class="fw-bold">Recent Transactions</h5>
+			</div>
+			<div class="px-4 pb-4">
+				<ejs-grid id="recent-transactions"
+						  dataSource=" @ViewBag.RecentTransactions">
+						<e-grid-columns>
+						<e-grid-column headerText="Category" field="CategoryIdWithIcon"></e-grid-column>
+						<e-grid-column headerText="Date" field="Date" width="110px"
+									   type="date" format="MMM-dd-yy" textAlign="Left"></e-grid-column>
+						<e-grid-column headerText="Amount" field="FormattedAmount" textAlign="Right" width="150px"></e-grid-column>
+					</e-grid-columns>
+				</ejs-grid>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-6">
+		<div class="widget h-100">
+			<div class="d-flex justify-content-center align-items-center h-100">
+				<span><i class="fa-solid fa-plus fa-2xl"></i>Widget</span>
+			</div>
+		</div>
+	</div>
+</div>
+
+
