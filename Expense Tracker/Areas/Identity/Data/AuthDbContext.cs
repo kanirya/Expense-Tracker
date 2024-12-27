@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Expense_Tracker.Areas.Identity.Data;
 
-public class DBContext : IdentityDbContext<AppUser>
+public class AuthDbContext : IdentityDbContext<ApplicationUser>
 {
-    public DBContext(DbContextOptions<DBContext> options)
+    public AuthDbContext(DbContextOptions<AuthDbContext> options)
         : base(options)
     {
     }

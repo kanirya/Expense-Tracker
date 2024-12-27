@@ -8,7 +8,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Areas\Identity\Pages\_AuthLayout.cshtml" />
     <Content Remove="Views\Category\Edit.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Areas\Identity\Pages\_AuthLayout.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
