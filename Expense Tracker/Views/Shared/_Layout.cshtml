@@ -24,12 +24,34 @@
 	<div class="col-lg-12 control-section default-appbar-section">
 		<ejs-appbar id="defaultAppBar" colorMode="Dark" style="background-color:#212b36">
 			<e-content-template style="background-color:#212b36">
-				
-
-
+			
 				<ejs-button aria-label="menu" id="defaultButtonMenu" cssClass="e-inherit" iconCss="e-icons e-menu"></ejs-button>
-				
-				<span class="regular whiteText" style="margin:0 5px">Expense Tracker</span>
+				<div class="col-md-2 ">
+					<a class="btn  whiteText" style="margin:0 5px" href="/">Expense Tracker</a>
+				</div>
+				<div class="col-md-6 d-flex justify-content-center align-items-center g-0">
+
+					@{
+						// Retrieve the map from ViewData and cast it
+						var mapFromViewData = ViewData["navButtons"] as Dictionary<string, string>;
+						if (mapFromViewData != null)
+						{
+							foreach (var kvp in mapFromViewData)
+							{
+								// Render each button
+								<a href="@kvp.Value" class="btn  btn-dark text-white custom-btn">
+									@kvp.Key
+								</a>
+							}
+						}
+						else
+						{
+							<span>No data available</span>
+						}
+					}
+				</div>
+
+			
 				<div class="e-appbar-spacer"></div>
 				<partial name="_LoginPartial" />
 			</e-content-template>

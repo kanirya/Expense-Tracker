@@ -2,6 +2,14 @@
 
 @{
     ViewData["PageTitle"] = Model.CategoryId==0?"Create a new category": "Edit Category";
+    var myMap = new Dictionary<string, string>
+    {
+        { "Category", "/Category" },
+        { "Transactions", "/Transaction" },
+    };
+
+    // Store it in ViewData
+    ViewData["navButtons"] = myMap;
 }
 
 
