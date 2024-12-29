@@ -4,25 +4,42 @@
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
 
-<ul class="navbar-nav">
-    @if (SignInManager.IsSignedIn(User))
-    {
-        <li class="nav-item">
-            <a id="manage" class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
-        </li>
-        <li class="nav-item">
-            <form id="logoutForm" class="form-inline whiteText" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                <button id="logout" type="submit" class="nav-link btn btn-link text-dark border-0">Logout</button>
-            </form>
-        </li>
-    }
-    else
-    {
-        <li class="nav-item">
-            <a class="nav-link text-white whiteText" id="register" asp-area="Identity" asp-page="/Account/Register">Register</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-white" id="login" asp-area="Identity" asp-page="/Account/Login">Login</a>
-        </li>
-    }
-</ul>
+<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+    <div class="container-fluid">
+        <!-- Brand or Title -->
+
+        <!-- Toggler for small screens -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navbar Content -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                @if (SignInManager.IsSignedIn(User))
+                {
+                    <!-- Display for Logged-in Users -->
+                    <li class="nav-item">
+                        <a id="manage" class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
+                    </li>
+                    <li class="nav-item">
+                        <form id="logoutForm" asp-area="Identity" asp-page="/Account/Logout"
+                              asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" class="d-inline">
+                            <button id="logout" type="submit" class="btn btn-link nav-link text-dark border-0">Logout</button>
+                        </form>
+                    </li>
+                }
+                else
+                {
+                    <!-- Display for Guests -->
+                    <li class="nav-item " >
+                        <a class="nav-link text-dark" id="register" asp-area="Identity" asp-page="/Account/Register">Register</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" id="login" asp-area="Identity" asp-page="/Account/Login">Login</a>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+</nav>

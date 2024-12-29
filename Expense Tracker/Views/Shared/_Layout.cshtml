@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
@@ -18,18 +20,33 @@
 
 	<partial name="_SideBar" />
 
+
+	<div class="col-lg-12 control-section default-appbar-section">
+		<ejs-appbar id="defaultAppBar" colorMode="Dark">
+			<e-content-template>
+				
+
+
+				<ejs-button aria-label="menu" id="defaultButtonMenu" cssClass="e-inherit" iconCss="e-icons e-menu"></ejs-button>
+				<span class="regular" style="margin:0 5px">Expense Tracker</span>
+				<div class="e-appbar-spacer"></div>
+				<partial name="_LoginPartial" />
+			</e-content-template>
+		</ejs-appbar>
+	</div>
+
 	<div class="dock-target">
 
-		<nav class="navbar sticky-top">
-			<div class="container-fluid py-2 px-4">
-				<i class="fa-solid fa-magnifying-glass"></i>
-				<div>
-					<i class="fa-solid fa-bell"></i>
-					<i class="fa-solid fa-message"></i>
-					<img class="profile-pic" src="~/profile.jpg" />
-				</div>
-			</div>
-		</nav>
+		@* <nav class="navbar sticky-top"> *@
+		@* 	<div class="container-fluid py-2 px-4"> *@
+		@* 		<i class="fa-solid fa-magnifying-glass"></i> *@
+		@* 		<div> *@
+		@* 			<i class="fa-solid fa-bell"></i> *@
+		@* 			<i class="fa-solid fa-message"></i> *@
+		@* 			<img class="profile-pic" src="~/profile.jpg" /> *@
+		@* 		</div> *@
+		@* 	</div> *@
+		@* </nav> *@
 	
 
 	<div class="main-content">
