@@ -5,7 +5,12 @@
     ViewData["PageActionUrl"] = "/Transaction/AddOrEdit/";
     ViewData["PageController"] = "Transaction";
     ViewData["PageAction"] = "AddOrEdit";
-
+    var myMap = new Dictionary<string, string>
+    {
+           { "Transactions", "/Transaction" },
+        { "Add New Transaction", "/Transaction/AddOrEdit" },
+    };
+    ViewData["navButtons"] = myMap;
 }
 <div class="row">
     <div class="col-md-7">

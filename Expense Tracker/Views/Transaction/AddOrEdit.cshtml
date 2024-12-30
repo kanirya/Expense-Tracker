@@ -2,7 +2,12 @@
 
 @{
 	ViewData["PageTitle"] = Model.TransactionId == 0 ? "Create a new Transaction" : "Edit Transaction";
-
+	var myMap = new Dictionary<string, string>
+	{
+		   { "Transactions", "/Transaction" },
+		{ "Add New Transaction", "/Transaction/AddOrEdit" },
+	};
+	ViewData["navButtons"] = myMap;
 }
 
 <div class="row">
