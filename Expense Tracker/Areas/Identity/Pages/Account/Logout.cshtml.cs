@@ -2,9 +2,7 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 #nullable disable
 
-using System;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
 using Expense_Tracker.Areas.Identity.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -26,17 +24,32 @@ namespace Expense_Tracker.Areas.Identity.Pages.Account
 
         public async Task<IActionResult> OnPost(string returnUrl = null)
         {
+            // Sign out the user
             await _signInManager.SignOutAsync();
+
+            // Clear cookies explicitly
+            foreach (var cookie in HttpContext.Request.Cookies.Keys)
+            {
+                Response.Cookies.Delete(cookie);
+            }
+
+            // Log the logout event
             _logger.LogInformation("User logged out.");
+
+            // Add cache control headers to prevent caching issues
+            Response.Headers["Cache-Control"] = "no-cache, no-store, must-revalidate";
+            Response.Headers["Pragma"] = "no-cache";
+            Response.Headers["Expires"] = "0";
+
+            // Redirect user after logout
             if (returnUrl != null)
             {
                 return LocalRedirect(returnUrl);
             }
             else
             {
-                // This needs to be a redirect so that the browser performs a new
-                // request and the identity for the user gets updated.
-                return RedirectToPage();
+                // Redirect to the login page explicitly
+                return RedirectToPage("/Account/Login");
             }
         }
     }

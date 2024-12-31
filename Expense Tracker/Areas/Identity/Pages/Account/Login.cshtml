@@ -13,21 +13,33 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    @* <link rel="stylesheet" href="https://cdn.syncfusion.com/ej2/28.1.33/material.css" /> *@
+    <link href="https://cdn.syncfusion.com/ej2/28.1.33/bootstrap5-dark.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+    <link rel="stylesheet" href="~/Expense_Tracker.styles.css" asp-append-version="true" />
+    <script src="https://cdn.syncfusion.com/ej2/28.1.33/dist/ej2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <title>@ViewData["Title"]</title>
 </head>
-<body class="bg-light">
-    <div class="container mt-5">
+<body style=" background-color: #12161d;color: #fff;">
+    <div class="container mt-5 ">
         <div class="row justify-content-center ">
             <!-- Login Section -->
-            <div class="col-lg-5 col-md-7">
+            <div class="col-lg-5 col-md-7  " >
                 <div class="card shadow-lg">
-                    <div class="card-header  text-white text-center" style="  background-color: #12161d;">
-                        <h3>Log In</h3>
+                    <div class="card-header  text-white text-center" style=" background-color: #000; color: #fff;" >
+                        <h3 class="large-text">Log In</h3>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body" style=" background-color: #12161d;color: #fff;">
                         <form id="account" method="post">
-                            <h5 class="text-center mb-4">Use a local account to log in</h5>
+                            <h5 class="text-center mb-4 large-text">Use a local account to log in</h5>
                             <div asp-validation-summary="ModelOnly" class="text-danger mb-3" role="alert"></div>
                             <!-- Email Field -->
                             <div class="mb-3">
@@ -37,7 +49,7 @@
                             </div>
                             <div class="mb-3">
                                 <label asp-for="Input.Password" class="form-label fw-bold">Password</label>
-                                <input asp-for="Input.Password" class="form-control" type="password" placeholder="Password" />
+                                <input asp-for="Input.Password" class="form-control " type="password" placeholder="Password" autocomplete="Name" aria-required="true" />
                                 <span asp-validation-for="Input.Password" class="text-danger"></span>
                             </div>
                             
@@ -51,53 +63,17 @@
                                 <button type="submit" class="btn btn-dark w-100">Log in</button>
                             </div>
                             <!-- Links -->
-                            <div class="text-center mt-3">
-                                <p><a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a></p>
-                                <p><a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a></p>
-                                <p><a id="resend-confirmation" asp-page="./ResendEmailConfirmation">Resend email confirmation</a></p>
+                            <div class="text-start mt-3">
+                                <h6><a id="forgot-password" class="small-bold-text" asp-page="./ForgotPassword">Forgot your password?</a></p>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
-            <!-- External Login Section -->
-            <div class="col-lg-5 col-md-7 mt-4 mt-md-0">
-                <div class="card shadow-lg">
-                    <div class="card-header bg-secondary text-white text-center">
-                        <h3>External Login</h3>
-                    </div>
-                    <div class="card-body">
-                        @if ((Model.ExternalLogins?.Count ?? 0) == 0)
-                        {
-                            <div class="alert alert-warning text-center">
-                                <p>There are no external authentication services configured.</p>
-                                <p>
-                                    See this <a href="https://go.microsoft.com/fwlink/?LinkID=532715" target="_blank">article</a>
-                                    about setting up external services.
-                                </p>
-                            </div>
-                        }
-                        else
-                        {
-                            <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post">
-                                <div class="d-grid gap-2">
-                                    @foreach (var provider in Model.ExternalLogins!)
-                                    {
-                                        <button type="submit" class="btn btn-outline-primary" name="provider" value="@provider.Name">
-                                            Log in with @provider.DisplayName
-                                        </button>
-                                    }
-                                </div>
-                            </form>
-                        }
-                    </div>
-                </div>
-            </div>
+         
         </div>
     </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
-    @section Scripts {
+   @section Scripts {
         <partial name="_ValidationScriptsPartial" />
     }
 </body>

@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore;
 using Expense_Tracker.Areas.Identity.Data;
 using Microsoft.AspNetCore.Identity;
 
+using Expense_Tracker.Areas.Identity.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -41,6 +43,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
 app.UseAuthorization();
+app.UseAuthentication();
 
 app.MapControllerRoute(
     name: "default",

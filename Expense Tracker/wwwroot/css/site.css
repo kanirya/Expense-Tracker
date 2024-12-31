@@ -440,7 +440,13 @@ textarea {
     resize: none; /* Prevent resizing */
     height: 100px;
 }
-.large-text{
-    font-size:20px;
-    font-weight:bold;
+.large-text {
+    font-size: 20px;
+    font-weight: bold;
+    font-family: "Poppins";
+}
+.small-bold-text {
+    font-size: 13px;
+    font-weight: bold;
+    font-family: "Poppins";
 }
