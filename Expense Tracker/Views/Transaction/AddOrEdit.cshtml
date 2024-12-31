@@ -1,6 +1,7 @@
 ﻿@model Expense_Tracker.Models.Transaction
 
 @{
+	ViewData["Title"] = "Transaction";
 	ViewData["PageTitle"] = Model.TransactionId == 0 ? "Create a new Transaction" : "Edit Transaction";
 	var myMap = new Dictionary<string, string>
 	{

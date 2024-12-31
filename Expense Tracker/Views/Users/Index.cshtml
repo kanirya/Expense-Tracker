@@ -1,0 +1,15 @@
+﻿@{
+    ViewData["Title"] = "Users";
+    ViewData["Breadcrumb"] = true;
+    var myMap = new Dictionary<string, string>
+    {
+        { "Users", "/Users" },
+         { "New User", "/Identity/Account/Register" },
+    };
+
+    // Store it in ViewData
+    ViewData["navButtons"] = myMap;
+}
+
+
+<h4>UI will be made later</h4>

@@ -1,6 +1,7 @@
 ﻿@model Expense_Tracker.Models.Category
 
 @{
+    ViewData["Title"] = "Category";
     ViewData["PageTitle"] = Model.CategoryId==0?"Create a new category": "Edit Category";
     var myMap = new Dictionary<string, string>
     {

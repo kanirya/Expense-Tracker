@@ -2,6 +2,15 @@
 @model RegisterModel
 @{
     ViewData["Title"] = "Register";
+
+    var myMap = new Dictionary<string, string>
+    {
+        { "Users", "/Users" },
+         { "New User", "/Identity/Account/Register" },
+    };
+
+    // Store it in ViewData
+    ViewData["navButtons"] = myMap;
 }
 
 <h1>@ViewData["Title"]</h1>
