@@ -450,3 +450,12 @@ textarea {
     font-weight: bold;
     font-family: "Poppins";
 }
+
+
+.testing-dev{
+    border-radius:12px;
+    background-color:aqua;
+    padding:10px;
+    align-content:center;
+    align-items:center;
+}

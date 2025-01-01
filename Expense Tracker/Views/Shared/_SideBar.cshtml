@@ -15,15 +15,10 @@
         url = "/",
         iconCss = "fa-solid fa-box",
     });
+ 
     menuItems.Add(new
     {
-        text = "Categories",
-        url = "/Category",
-        iconCss = "fa-solid fa-folder-closed",
-    });
-    menuItems.Add(new
-    {
-        text = "Transactions",
+        text = "Expenses",
         iconCss = "fa-solid fa-arrow-right-arrow-left",
         url = "/Transaction"
     });
@@ -60,8 +55,8 @@
 
 
 
-<ejs-sidebar id="sidebar" width="290px" enableDock dockSize="100px"
-             target=".dock-target" enableGestures="false">
+<ejs-sidebar id="sidebar" width="290px" enableDock dockSize="100px" mediaQuery="(min-width: 900px)"
+             target=".dock-target" enableGestures="false" enableDock="true">
     <e-content-template>
 
         <div class="logo-wrapper">
@@ -73,14 +68,14 @@
         <div class="profile-wrapper">
             <img class="profile-pic" src="~/profile.jpg" />
             <div class="titles d-flex flex-column ps-3">
-                <h7 class="mb-0"> @User.Identity.Name</h7>
+               
                 @if (User.Identity.IsAuthenticated)
                 {
-            <li><a href="/Account/Logout">Logout</a></li>
+                    <h7 class="mb-0"> @User.Identity.Name</h7>
                 }
                 else
                 {
-            <li><a href="/Account/Login">Login</a></li>
+           <h7 class="mb-0">Log In</h7>
                 }
             </div>
         </div>
