@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IEnumerable<Expense_Tracker.Areas.Identity.Data.ApplicationUser>
+@{
     ViewData["Title"] = "Users";
     ViewData["Breadcrumb"] = true;
     var myMap = new Dictionary<string, string>
@@ -11,5 +12,25 @@
     ViewData["navButtons"] = myMap;
 }
 
+<div class="row">
+    <div class="col-md-12">
+        <ejs-grid id="UserTable" dataSource="@Model" gridLines="None" allowSorting="true" toolbar="@(new List<string>() { "Search"})" allowPaging="true" allowFiltering="true">
+            <e-grid-pagesettings pageSize="80 "></e-grid-pagesettings>
+            <e-grid-searchSettings operator="contains"style="background:transparent" ></e-grid-searchSettings>
+            <e-grid-filterSettings type="Excel"></e-grid-filterSettings>
+            <e-grid-columns >
+                
+                <e-grid-column  headerText="Name" field="Name">  </e-grid-column>
+                <e-grid-column headerText="PhoneNumber" field="PhoneNumber">  </e-grid-column>
+                <e-grid-column headerText="Email" field="Email">  </e-grid-column>
+            </e-grid-columns>
+        </ejs-grid>
+    </div>
+</div>
 
-<h4>UI will be made later</h4>
+<script>
+    function change(args) {
+        var grid = document.getElementById("Search").ej2_instances[0];
+        grid.searchSettings.operator = args.value;
+    }
+</script>

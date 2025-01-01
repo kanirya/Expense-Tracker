@@ -1,12 +1,28 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Expense_Tracker.Areas.Identity.Data;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Expense_Tracker.Controllers
 {
+    [Authorize]
     public class UsersController : Controller
     {
+        private readonly UserManager<ApplicationUser> _userManager;
+
+     public    UsersController(UserManager<ApplicationUser> userManager)
+        {
+            _userManager = userManager;
+        }
+
+       
+
         public IActionResult Index()
         {
-            return View();
+            var users = _userManager.Users.ToList();
+            ViewData["UserID"]=    _userManager.GetUserId(this.User);
+
+            return View(users);
         }
     }
 }

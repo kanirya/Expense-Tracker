@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Expense_Tracker.Models;
 using Expense_Tracker.Repository;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Expense_Tracker.Controllers
 {
+    [Authorize]
     public class TransactionController : Controller
     {
         private readonly ApplicationDbContext _context;
