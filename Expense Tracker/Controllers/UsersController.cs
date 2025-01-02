@@ -5,7 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Expense_Tracker.Controllers
 {
-    [Authorize]
+
+    [Authorize(Roles="Admin,Sales")]
     public class UsersController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;

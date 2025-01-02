@@ -363,6 +363,7 @@ input[type="text"],
 input[type="email"],
 input[type="password"],
 input[type="tel"],
+select,
 textarea {
     background-color: #1e1e2f; /* Dark background */
     color: #ffffff; /* Light text color */
@@ -381,6 +382,7 @@ textarea {
     input[type="email"]::placeholder,
     input[type="password"]::placeholder,
     input[type="tel"]::placeholder,
+    select::placeholder,
     textarea::placeholder {
         color: #888888; /* Subtle placeholder color */
         font-style: italic;
@@ -391,6 +393,7 @@ textarea {
     input[type="email"]:hover,
     input[type="password"]:hover,
     input[type="tel"]:hover,
+    select:hover,
     textarea:hover {
         border-color: #6272a4; /* Hover border color */
     }
@@ -400,6 +403,7 @@ textarea {
     input[type="email"]:focus,
     input[type="password"]:focus,
     input[type="tel"]:focus,
+    select:focus,
     textarea:focus {
         background-color: #2b2b3a; /* Slightly lighter for focus */
         border-color: #8be9fd; /* Focus border color */
@@ -412,6 +416,7 @@ textarea {
     input[type="email"]:disabled,
     input[type="password"]:disabled,
     input[type="tel"]:disabled,
+    select:disabled,
     textarea:disabled {
         background-color: #2e2e3f; /* Slightly lighter for disabled */
         color: #666666; /* Faded text */

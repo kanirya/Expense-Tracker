@@ -1,0 +1,38 @@
+﻿@using Microsoft.AspNetCore.Identity;
+@model IEnumerable<IdentityRole>
+
+
+@{
+	ViewData["Title"] = "Application Roles";
+	ViewData["Title"] = "Roles";
+	var myMap = new Dictionary<string, string>
+	{
+		{ "Add Role", "/AppRoles/Create" },
+	};
+
+	// Store it in ViewData
+	ViewData["navButtons"] = myMap;
+}
+<h1>View Roles</h1>
+
+
+
+<table class="table">
+	<thead>
+		<tr>
+			<th>@Html.DisplayNameFor(model => model.Id)</th>
+			<th>@Html.DisplayNameFor(model => model.Name)</th>
+
+			<th></th>
+
+		</tr>
+	</thead>
+	<tbody>
+		@foreach(var item in Model){
+			<tr>
+				<td>@Html.DisplayFor(modelItem=>item.Id)</td>
+				<td>@Html.DisplayFor(modelItem=>item.Name)</td>
+			</tr>
+		}
+	</tbody>
+</table>

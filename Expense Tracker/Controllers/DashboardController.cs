@@ -8,7 +8,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Expense_Tracker.Controllers
 {
-    [Authorize]
+
+    [Authorize(Roles ="Admin")]
     public class DashboardController : Controller
     {
         private readonly ApplicationDbContext _context;
