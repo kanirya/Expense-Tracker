@@ -32,8 +32,6 @@
     function validateForm() {
         const roleName = document.getElementById('roleName').value.trim();
         const submitButton = document.getElementById('submitButton');
-
-        // Enable button only if the input is not empty
         if (roleName.length > 0) {
             submitButton.disabled = false;
         } else {
