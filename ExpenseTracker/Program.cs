@@ -13,6 +13,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlSer
     builder.Configuration.GetConnectionString("DevConnection")));
 
 
+builder.Services.AddHttpClient();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

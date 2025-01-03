@@ -25,8 +25,13 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Http" Version="8.0.1" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.7" />
     <PackageReference Include="Syncfusion.EJ2.AspNet.Core" Version="28.1.33" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\DTOs\" />
   </ItemGroup>
 
 </Project>

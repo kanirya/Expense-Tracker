@@ -13,26 +13,19 @@
 	// Store it in ViewData
 	ViewData["navButtons"] = myMap;
 }
-<h1>View Roles</h1>
+<h2 class="large-text">View Roles</h2>
 
 
 
-<table class="table">
-	<thead>
-		<tr>
-			<th>@Html.DisplayNameFor(model => model.Id)</th>
-			<th>@Html.DisplayNameFor(model => model.Name)</th>
+<div class="row">
+	<div class="col-md-4">
+		<ejs-grid id="EmployeeTable" dataSource="@Model" allowFiltering="true" allowSorting="true" allowPaging="true">
+			<e-grid-pagesettings pageSize="6"></e-grid-pagesettings>
+			<e-grid-filterSettings type="Excel"></e-grid-filterSettings>
+			<e-grid-columns>
+				<e-grid-column headerText="Roles" field="Name"></e-grid-column>
+			</e-grid-columns>
 
-			<th></th>
-
-		</tr>
-	</thead>
-	<tbody>
-		@foreach(var item in Model){
-			<tr>
-				<td>@Html.DisplayFor(modelItem=>item.Id)</td>
-				<td>@Html.DisplayFor(modelItem=>item.Name)</td>
-			</tr>
-		}
-	</tbody>
-</table>
+		</ejs-grid>
+	</div>
+</div>

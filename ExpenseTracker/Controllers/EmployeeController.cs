@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace ExpenseTracker.Controllers
 {
     //localhost:xxxx/api/employees
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class EmployeeController : ControllerBase
     {
@@ -72,5 +72,24 @@ namespace ExpenseTracker.Controllers
             _context.SaveChanges();
             return Ok(employee);
         }
+
+
+        [HttpDelete]
+        [Route("{id:guid}")]
+        public IActionResult DeleteEmployee(Guid id)
+        {
+            var employee=_context.Employees.Find(id);
+            if (employee is null)
+            {
+                return NotFound();
+            }
+            _context.Employees.Remove(employee);
+            _context.SaveChanges();
+            return Ok();
+        }
+    
+    
+    
+    
     }
 }

@@ -464,3 +464,128 @@ textarea {
     align-content:center;
     align-items:center;
 }
+
+
+/* Table Styling */
+.employee-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px auto;
+    font-size: 1rem;
+    background-color: #1e1e2f; /* Dark table background */
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+    .employee-table thead tr {
+        background: linear-gradient(45deg, #6a11cb, #2575fc); /* Gradient header */
+        color: white;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        font-family:"Poppins"
+    }
+
+    .employee-table th, .employee-table td {
+        padding: 15px 20px;
+        border: 1px solid #2d2d3b; /* Border color */
+        text-align: left;
+    }
+
+    .employee-table tbody tr {
+        transition: background 0.3s ease;
+    }
+
+        .employee-table tbody tr:nth-child(even) {
+            background-color: #242435; /* Slightly lighter background for even rows */
+        }
+
+        .employee-table tbody tr:nth-child(odd) {
+            background-color: #1e1e2f; /* Dark background for odd rows */
+        }
+
+        .employee-table tbody tr:hover {
+            background-color: #333348; /* Highlighted background on hover */
+            transform: scale(1.02); /* Subtle zoom effect */
+            cursor: pointer;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+/* Action Buttons */
+.btn {
+    padding: 8px 15px;
+    font-size: 0.85rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-edit {
+    background: linear-gradient(45deg, #56ccf2, #2f80ed); /* Gradient for edit */
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+    .btn-edit:hover {
+        background: linear-gradient(45deg, #2f80ed, #56ccf2);
+        box-shadow: 0 4px 15px rgba(45, 128, 237, 0.5);
+    }
+
+.btn-delete {
+    background: linear-gradient(45deg, #f2994a, #eb5757); /* Gradient for delete */
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+    .btn-delete:hover {
+        background: linear-gradient(45deg, #eb5757, #f2994a);
+        box-shadow: 0 4px 15px rgba(235, 87, 87, 0.5);
+    }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .employee-table {
+        font-size: 0.85rem;
+    }
+
+        .employee-table thead {
+            display: none;
+        }
+
+        .employee-table tbody tr {
+            display: block;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .employee-table tbody td {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border: none;
+            border-bottom: 1px solid #2d2d3b;
+        }
+
+            .employee-table tbody td:last-child {
+                border: none;
+            }
+
+            .employee-table tbody td::before {
+                content: attr(data-label);
+                font-weight: bold;
+                text-transform: uppercase;
+                color: #b3b3b3; /* Slightly lighter text for labels */
+            }
+}
+
+/* Hover Effects for Table Rows */
+.employee-table tbody tr:hover td {
+    color: #ffffff;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
