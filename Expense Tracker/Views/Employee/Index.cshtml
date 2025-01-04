@@ -1,8 +1,10 @@
 ﻿@model IEnumerable<Expense_Tracker.Models.Employee>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Employee";
+
     Layout = "~/Views/Shared/_Layout.cshtml";
+
 }
 
 <h1>Index</h1>
@@ -46,9 +48,10 @@
                 @Html.DisplayFor(modelItem => item.Salary)
             </td>
             <td>
-                    <a class="btn btn-edit" asp-action="Details" asp-route-id="@item.Id">Edit</a> |
-                <a  class="btn btn-edit" asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a class="btn btn-edit" asp-action="Details" asp-route-id="@item.Id">Edit</a> 
+                <a  class="btn btn-edit" asp-action="Details" asp-route-id="@item.Id">Details</a> 
                 <a class="btn btn-delete" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                   
             </td>
         </tr>
 }
