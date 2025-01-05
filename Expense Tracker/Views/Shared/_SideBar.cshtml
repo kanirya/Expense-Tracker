@@ -72,9 +72,13 @@
 
 
 
-
-<ejs-sidebar id="sidebar" width="290px" enableDock dockSize="100px" mediaQuery="(min-width: 900px)"
-             target=".dock-target" enableGestures="false" enableDock="true">
+<ejs-sidebar id="sidebar"
+             width="290px"
+             dockSize="72px"
+             enableDock="true"
+             target=".dock-target"
+             enableGestures="false"
+             mediaQuery="(min-width: 900px)">
     <e-content-template>
 
         <div class="logo-wrapper">
@@ -82,6 +86,7 @@
             <div class="w-100"></div>
             <i id="sidebar-toggler" class="fa-solid"></i>
         </div>
+
 
         <div class="profile-wrapper">
             <img class="profile-pic" src="~/profile.jpg" />
@@ -102,11 +107,12 @@
                
             </div>
         </div>
-
         <ejs-menu id="menu"
                   items="menuItems"
                   orientation="Vertical"
                   hamburgerMode></ejs-menu>
+       
+
     </e-content-template>
 </ejs-sidebar>
 
