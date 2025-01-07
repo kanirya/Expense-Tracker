@@ -589,3 +589,195 @@ textarea {
     font-weight: bold;
     transition: color 0.3s ease;
 }
+.sidebar {
+    height: 100vh;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    overflow-y: auto;
+    transition: all 0.3s;
+}
+
+.sidebar-header {
+    background: linear-gradient(45deg, #1c1c1c, #333333);
+    padding: 20px;
+    text-align: center;
+    color: #fff;
+    border-bottom: 1px solid #444;
+}
+
+.sidebar ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+    .sidebar ul li {
+        padding: 10px 20px;
+        margin: 5px 0;
+        display: flex;
+        align-items: center;
+    }
+
+        .sidebar ul li a {
+            text-decoration: none;
+            color: #adb5bd;
+            font-size: 16px;
+            width: 100%;
+            transition: background 0.3s, color 0.3s;
+        }
+
+            .sidebar ul li.active a,
+            .sidebar ul li a:hover {
+                background: #198754;
+                color: #fff;
+                border-radius: 4px;
+            }
+
+            .sidebar ul li a i {
+                font-size: 18px;
+                margin-right: 10px;
+            }
+
+.sidebar hr {
+    border-top: 1px solid #444;
+}
+
+
+
+.appbar {
+    background-color: #212b36;
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1030;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar {
+    background-color: #343a40;
+    color: white;
+    height: calc(100vh - 60px);
+    padding-top: 20px;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 250px;
+    overflow-y: auto;
+}
+
+    .sidebar a {
+        color: white;
+        text-decoration: none;
+        padding: 10px 20px;
+        display: block;
+        transition: background 0.3s;
+    }
+
+        .sidebar a:hover {
+            background-color: #495057;
+        }
+
+
+.profile-section img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.sidebar .sidebar-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+    .sidebar .sidebar-header h5 {
+        margin: 10px 0 5px;
+    }
+
+    .sidebar .sidebar-header small {
+        font-size: 12px;
+    }
+
+
+/* Appbar styles */
+.appbar {
+    background-color: #212b36;
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1030;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Sidebar styles */
+.sidebar {
+    background-color: #343a40;
+    color: white;
+    position: fixed;
+    top: 60px; /* Starts below the appbar */
+    left: 0;
+    width: 250px;
+    height: calc(100% - 60px); /* Full height minus the appbar height */
+    overflow-y: auto;
+    transition: transform 0.3s ease-in-out;
+}
+
+    .sidebar a {
+        color: white;
+        text-decoration: none;
+        padding: 10px 20px;
+        display: block;
+        transition: background 0.3s ease;
+    }
+
+        .sidebar a:hover {
+            background-color: #495057;
+        }
+
+    .sidebar .sidebar-header {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+        width: 250px;
+    }
+
+        .sidebar.open {
+            transform: translateX(0);
+        }
+
+    .main-content {
+        margin-left: 0;
+    }
+}
+
+/* Utility class for hiding scrollbars */
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.hide-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
