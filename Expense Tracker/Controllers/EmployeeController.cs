@@ -116,20 +116,50 @@ namespace Expense_Tracker.Controllers
                 Phone = null, // Replace with default or placeholder value
                 Salary = 0 // Replace with default or placeholder value
             };
+
+
+
             return View(employee);
         }
+
+
+
         // Add Employee (POST to API)
         [HttpPost]
-        public async Task<IActionResult> Create(AddEmployeeDto addEmployeeDto)
+        public async Task<IActionResult> create(AddEmployeeDto addEmployeeDto)
         {
-            var response = await _client.PostAsJsonAsync("", addEmployeeDto);
-            if (response.IsSuccessStatusCode)
+            if (!ModelState.IsValid)
             {
-                return RedirectToAction("Index");
+                return View();
             }
-            ModelState.AddModelError("", "Failed to add employee");
-            return View(addEmployeeDto);
+
+            // Make a PUT request to the API with the updated employee data.
+            StringContent content = new StringContent(
+                JsonConvert.SerializeObject(addEmployeeDto),
+                Encoding.UTF8,
+                "application/json");
+
+            HttpResponseMessage putResponse = await _client.PostAsync($"{_client.BaseAddress}/AddEmployee", content);
+
+            if (putResponse.IsSuccessStatusCode)
+            {
+                // Successfully updated the employee.
+                return RedirectToAction("Index"); // Redirect to the list of employees.
+            }
+
+            // If the update fails, show an error message.
+            ModelState.AddModelError("", "Unable to update employee. Please try again.");
+            return View();
+
         }
+        //var response = await _client.PostAsJsonAsync("", addEmployeeDto);
+        //    if (response.IsSuccessStatusCode)
+        //    {
+        //        return RedirectToAction("Index");
+        //    }
+        //    ModelState.AddModelError("", "Failed to add employee");
+        //    return View(addEmployeeDto);
+        //}
 
         // Delete Employee
         [HttpPost]
