@@ -1,97 +1,89 @@
-﻿﻿
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>Expense Tracker</title>
-	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-	@* <link rel="stylesheet" href="https://cdn.syncfusion.com/ej2/28.1.33/material.css" /> *@
-	<link href="https://cdn.syncfusion.com/ej2/28.1.33/bootstrap5-dark.css" rel="stylesheet" />
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-	<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-
-
-	<link rel="stylesheet" href="~/Expense_Tracker.styles.css" asp-append-version="true" />
-	<script src="https://cdn.syncfusion.com/ej2/28.1.33/dist/ej2.min.js"></script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link href="https://cdn.syncfusion.com/ej2/28.1.33/bootstrap5-dark.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Expense_Tracker.styles.css" asp-append-version="true" />
+    <script src="https://cdn.syncfusion.com/ej2/28.1.33/dist/ej2.min.js"></script>
+    <style>
+        /* Ensure the sidebar does not overlap with the appbar */
+       
+    </style>
 </head>
 <body class="e-bigger body">
 
+    <!-- AppBar -->
+    <div class="appbar d-flex justify-content-between align-items-center">
+        <button class="toggle-btn" onclick="toggleSidebar()">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        <h3 class="m-0">@(ViewData["Title"] ?? "Expense Tracker")</h3>
+        <div class="d-flex align-items-center">
+            @if (ViewData["navButtons"] is Dictionary<string, string> navButtons)
+            {
+                foreach (var button in navButtons)
+                {
+                    <a href="@button.Value" class="btn btn-dark text-white mx-2">@button.Key</a>
+                }
+            }
+            <partial name="_LoginPartial" />
+        </div>
+    </div>
 
+    <!-- Main Content Area -->
+    <div class="main-container d-flex">
+        <!-- Sidebar -->
+        <div class="sidebar mt-5" id="side_nav" >
+            <div class="header-box p-3">
+                <h1 class="fs-4">
+                    <span class="bg-white text-dark rounded shadow px-2 me-2">CL</span>
+                    DIDIBYTE
+                </h1>
+            </div>
+            <ul class="menu list-unstyled">
+                <li><a href="/" class="d-flex align-items-center text-decoration-none text-white py-2 px-3"><i class="fa-solid fa-home me-2"></i> Dashboard</a></li>
+                <li><a href="/Transaction" class="d-flex align-items-center text-decoration-none text-white py-2 px-3"><i class="fa-solid fa-cash-register me-2"></i> Point Of Sale</a></li>
+                <li><a href="/Category" class="d-flex align-items-center text-decoration-none text-white py-2 px-3"><i class="fa-solid fa-arrow-right-arrow-left me-2"></i> Expenses</a></li>
+                <li><a href="/Inventory" class="d-flex align-items-center text-decoration-none text-white py-2 px-3"><i class="fa-solid fa-boxes-stacked me-2"></i> Inventory</a></li>
+                <li><a href="/Reports" class="d-flex align-items-center text-decoration-none text-white py-2 px-3"><i class="fa-solid fa-chart-simple me-2"></i> Reports</a></li>
+                <li><a href="/Users" class="d-flex align-items-center text-decoration-none text-white py-2 px-3"><i class="fa-solid fa-users me-2"></i> Users</a></li>
+                <li><a href="/Settings" class="d-flex align-items-center text-decoration-none text-white py-2 px-3"><i class="fa-solid fa-gear me-2"></i> Settings</a></li>
+            </ul>
+        </div>
 
-	<div class="col-lg-12 control-section default-appbar-section">
+        <!-- Main Content -->
+        <div class="content" id="content_area">
+            @RenderBody()
+        </div>
+    </div>
 
-		<ejs-appbar id="defaultAppBar" colorMode="Dark" style="background-color:#212b36">
-			<e-content-template style="background-color:#212b36">
+    <!-- Scripts -->
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('side_nav');
+            sidebar.classList.toggle('active');
+        }
 
-				<ejs-button aria-label="menu" id="defaultButtonMenu" cssClass="e-inherit" iconCss="e-icons e-menu"></ejs-button>
-				<div class="col-md-2 ">
-					<a class="btn  whiteText custom-rbt-group text-white large-text" style="margin:0 10px" href="/">
-						@(ViewData["Title"] != null ? ViewData["Title"] : "Expense Tracker")
-					</a>
-				</div>
-				<div class=" d-flex justify-content-start align-items-center g-0">
+        // Close sidebar if clicked outside
+        document.addEventListener('click', function(e) {
+            const sidebar = document.getElementById('side_nav');
+            const toggleBtn = document.querySelector('.toggle-btn');
 
-					@{
-						// Retrieve the map from ViewData and cast it
-						var mapFromViewData = ViewData["navButtons"] as Dictionary<string, string>;
-						if (mapFromViewData != null)
-						{
-							foreach (var kvp in mapFromViewData)
-							{
-								// Render each button
-								<a href="@kvp.Value" class="btn  btn-dark text-white custom-btn">
-									@kvp.Key
-								</a>
-							}
-						}
-
-					}
-				</div>
-				<div class="e-appbar-spacer"></div>
-
-
-
-				<partial name="_LoginPartial" />
-			</e-content-template>
-		</ejs-appbar>
-	</div>
-	<partial name="_SideBar" />
-
-	<div class="dock-target">
-
-		@* <nav class="navbar sticky-top"> *@
-		@* 	<div class="container-fluid py-2 px-4"> *@
-		@* 		<i class="fa-solid fa-magnifying-glass"></i> *@
-		@* 		<div> *@
-		@* 			<i class="fa-solid fa-bell"></i> *@
-		@* 			<i class="fa-solid fa-message"></i> *@
-		@* 			<img class="profile-pic" src="~/profile.jpg" /> *@
-		@* 		</div> *@
-		@* 	</div> *@
-		@* </nav> *@
-
-
-		<div class="main-content">
-			<div class="container mt-5">
-				<div class="row justify-content-center">
-					<div class="@(ViewData["isDashboard"] == null?"col-md-10":"col-md-12")">
-						<main role="main" class="pb-3">
-						
-
-							@RenderBody()
-
-						</main>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<script src="~/lib/jquery/dist/jquery.min.js"></script>
-	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-	<script src="~/js/site.js" asp-append-version="true"></script>
-	@await RenderSectionAsync("Scripts", required: false)
-	<ejs-scripts></ejs-scripts>
+            if (!sidebar.contains(e.target) && !toggleBtn.contains(e.target)) {
+                sidebar.classList.remove('active');
+            }
+        });
+    </script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+    <ejs-scripts></ejs-scripts>
 </body>
 </html>

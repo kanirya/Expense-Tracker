@@ -1,4 +1,4 @@
-﻿﻿@*
+﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 
@@ -6,131 +6,81 @@
 @using Expense_Tracker.Areas.Identity.Data
 @inject UserManager<ApplicationUser> UserManager
 
+<div class="appbar">
+    <button class="toggle-btn" onclick="toggleSidebar()">
+        <i class="fas fa-bars"></i>
+    </button>
+    <h3>@(ViewData["Title"] ?? "Expense Tracker")</h3>
+    <div class="d-flex">
+        @if (ViewData["navButtons"] is Dictionary<string, string> navButtons)
+        {
+            foreach (var button in navButtons)
+            {
+                <a href="@button.Value" class="btn btn-dark text-white mx-2">@button.Key</a>
+            }
+        }
+        <partial name="_LoginPartial" />
+    </div>
+</div>
 
-@{
-    List<Object> menuItems = new List<Object>();
-
-    menuItems.Add(new
-    {
-        text = "General",
-        separator = true,
-    });
-    menuItems.Add(new
-    {
-        text = "Dashboard",
-        url = "/",
-        iconCss = "fa-solid fa-box",
-    });
- 
-    menuItems.Add(new
-    {
-        text = "Expenses",
-        iconCss = "fa-solid fa-arrow-right-arrow-left",
-        url = "/Transaction"
-    });
-    menuItems.Add(new
-    {
-        text = "Inventory",
-        iconCss = "fa-solid fa-arrow-right-arrow-left",
-        url = "#"
-    });
-
-    menuItems.Add(new
-    {
-        text = "Extras",
-        separator = true,
-    });
-    menuItems.Add(new
-    {
-        text = "Reports",
-        iconCss = "fa-solid fa-chart-simple",
-        url = "#"
-    }); 
-    menuItems.Add(new
-    {
-        text = "Users",
-        iconCss = "fa-solid fa-users",
-        url = "/Users"
-    });
-    menuItems.Add(new
-    {
-        text = "Employee",
-        iconCss = "fa-solid fa-user",
-        url = "/Employee"
-    });
-    menuItems.Add(new
-    {
-        text = "Roles",
-        iconCss = "fa-solid fa-user-secret",
-        url = "/AppRoles"
-    });
-
-
-    menuItems.Add(new
-    {
-        text = "Settings",
-        iconCss = "fa-solid fa-gear",
-        url = "#"
-    });
-}
-
-
-
-
-<ejs-sidebar id="sidebar"
-             width="290px"
-             dockSize="72px"
-             enableDock="true"
-             target=".dock-target"
-             enableGestures="false"
-             mediaQuery="(min-width: 900px)">
-    <e-content-template>
-
-        <div class="logo-wrapper">
-            
-            <div class="w-100"></div>
-            <i id="sidebar-toggler" class="fa-solid"></i>
+<div class="main-container d-flex">
+    <div class="sidebar" id="side_nav">
+        <div class="header-box">
+            <h1 class="fs-4">
+                <span class="bg-white text-dark rounded shadow px-2 me-2">CL</span>
+                DIDIBYTE
+            </h1>
         </div>
+        <ul class="menu">
+            <li>
+                <a href="/" class="d-flex align-items-center text-decoration-none text-white py-2 px-3">
+                    <i class="fas fa-home me-2"></i> Dashboard
+                </a>
+            </li>
+            <li>
+                <a href="/Transaction" class="d-flex align-items-center text-decoration-none text-white py-2 px-3">
+                    <i class="fa-solid fa-shop"></i> Point Of Sale
+                </a>
+            </li>
+            <li>
+                <a href="/Expenses" class="d-flex align-items-center text-decoration-none text-white py-2 px-3">
+                    <i class="fa-solid fa-arrow-right-arrow-left me-2"></i> Expenses
+                </a>
+            </li>
+            <li>
+                <a href="/Inventory" class="d-flex align-items-center text-decoration-none text-white py-2 px-3">
+                    <i class="fa-slid fa-boxes-stacked me-2"></i> Inventory
+                </a>
+            </li>
+            <li>
+                <a href="/Reports" class="d-flex align-items-center text-decoration-none text-white py-2 px-3">
+                    <i class="fas fa-chart-simple me-2"></i> Reports
+                </a>
+            </li>
+            <li>
+                <a href="/Users" class="d-flex align-items-center text-decoration-none text-white py-2 px-3">
+                    <i class="fas fa-users me-2"></i> Users
+                </a>
+            </li>
+            <li>
+                <a href="/Settings" class="d-flex align-items-center text-decoration-none text-white py-2 px-3">
+                    <i class="fas fa-gear me-2"></i> Settings
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="content" id="content_area">
+        @RenderBody()
+    </div>
+</div>
 
+<style>
 
-        <div class="profile-wrapper">
-            <img class="profile-pic" src="~/profile.jpg" />
-            <div class="titles d-flex flex-column ps-3">
-
-                @if (User.Identity.IsAuthenticated)
-                {
-                    var user = await UserManager.GetUserAsync(User);
-                    if(User!=null){
-                        <h6 class="sf-3">Welcome, @user.Name</h6>
-                        <p>@user.PhoneNumber</p>
-                    }
-                }
-                else
-                {
-                    <p>Welcome, Guest!</p>
-                }
-               
-            </div>
-        </div>
-        <ejs-menu id="menu"
-                  items="menuItems"
-                  orientation="Vertical"
-                  hamburgerMode></ejs-menu>
-       
-
-    </e-content-template>
-</ejs-sidebar>
+</style>
 
 <script>
-    document.addEventListener('DOMContentLoaded',function (){
-        dockBar = document.getElementById('sidebar').ej2_instances[0];
-        document.getElementById('sidebar-toggler').onclick = function () {
-            dockBar.toggle();
-        };
-    });
-
+    function toggleSidebar() {
+        const sidebar = document.getElementById('side_nav');
+        sidebar.classList.toggle('active');
+    }
 </script>
-
-
-
-

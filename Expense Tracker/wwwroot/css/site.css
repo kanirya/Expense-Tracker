@@ -37,6 +37,7 @@ body {
 
 
 
+
 /*BreadCrumb*/
 .e-breadcrumb a, .e-breadcrumb a:hover {
     text-decoration: none !important;
@@ -192,6 +193,7 @@ nav.navbar {
 }
 
     nav.navbar i {
+        font-family:"Poppins";
         padding: 10px;
         border-radius: 50%;
         font-size: 1.2rem;
@@ -650,6 +652,7 @@ textarea {
 .appbar {
     background-color: #212b36;
     color: white;
+    font-family:"Poppins";
     position: fixed;
     top: 0;
     left: 0;
@@ -780,4 +783,127 @@ textarea {
 .hide-scrollbar {
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
+}
+
+
+
+
+#side_bar {
+    background: #12161d;
+}
+
+.content{
+    min-height:100vh;
+    width:100%;
+    max-height:300vh;
+}
+
+
+
+.appbar {
+    background-color: #212b36;
+    color: white;
+    padding: 1rem;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+    .appbar h3 {
+        margin: 0;
+    }
+
+.toggle-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #212b36;
+    color: white;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    font-family:"Poppins";
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 999;
+    overflow-y: auto;
+}
+
+    .sidebar.active {
+        transform: translateX(0);
+    }
+
+    .sidebar .header-box {
+        padding: 1.5rem 1rem;
+        text-align: center;
+        background-color: #1c2530;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+        .sidebar .header-box h1 {
+            margin: 0;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+.menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+    .menu li {
+        padding: 0.5rem 1rem;
+        border-bottom: 1px solid #333;
+    }
+
+        .menu li a {
+            color: white;
+            display: flex;
+            font-family:"Poppins"
+            align-items: center;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+            .menu li a:hover {
+                background-color: #1c2530;
+                color: #00aaff;
+            }
+
+.content {
+    flex-grow: 1;
+    margin-left: 250px;
+    padding: 1rem;
+    transition: margin-left 0.3s ease-in-out;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+    }
+
+        .sidebar.active {
+            transform: translateX(0);
+        }
+
+    .content {
+        margin-left: 0;
+    }
+
+    .toggle-btn {
+        display: block;
+    }
 }
