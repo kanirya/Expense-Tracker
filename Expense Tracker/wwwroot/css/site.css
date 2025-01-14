@@ -186,8 +186,17 @@ body {
         }
 
 
+.nav-btn {
+    background-color: transparent; /* No background initially */
+    border: none;
+    transition: background-color 0.3s, color 0.3s;
+}
 
-/*Navbar*/
+.nav-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Darken the button on hover */
+    color: rgba(255,255,255,0.5); /* Optionally change text color */
+}
+
 nav.navbar {
     background-color: rgba(18, 22, 29);
 }

@@ -20,31 +20,7 @@
 
         <!-- Navbar Content -->
         <div class="collapse navbar-collapse" id="navbarNav"  >
-            <ul class="navbar-nav ms-auto ">
-                @if (SignInManager.IsSignedIn(User))
-                {
-                    <!-- Display for Logged-in Users -->
-                    <li class="nav-item text small-bold-text ">
-                        <a id="manage" class="nav-link text-white" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">@UserManager.GetUserName(User)!</a>
-                    </li>
-                    <li class="nav-item small-bold-text">
-                        <form id="logoutForm" asp-area="Identity" asp-page="/Account/Logout"
-                              asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" class="d-inline">
-                            <button id="logout" type="submit" class="btn btn-link nav-link text-white border-0">Logout</button>
-                        </form>
-                    </li>
-                }
-                else
-                {
-                    <!-- Display for Guests -->
-                    <li class="nav-item btn-success" >
-                        <a class="nav-link text-dark" id="register" asp-area="Identity" asp-page="/Account/Register">Register</a>
-                    </li>
-                    <li class="nav-item btn-success">
-                        <a class="nav-link text-dark" id="login" asp-area="Identity" asp-page="/Account/Login">Login</a>
-                    </li>
-                }
-            </ul>
+           
         </div>
     </div>
 </nav>

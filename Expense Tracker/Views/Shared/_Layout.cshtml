@@ -1,4 +1,10 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@using Expense_Tracker.Areas.Identity.Data
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -19,22 +25,75 @@
 <body class="e-bigger body">
 
     <!-- AppBar -->
-    <div class="appbar d-flex justify-content-between align-items-center">
-        <button class="toggle-btn" onclick="toggleSidebar()">
+    <div class="appbar d-flex align-items-center px-3" style="height: 60px;  color: white;">
+        <!-- Sidebar Toggle Button -->
+        <button class="toggle-btn btn btn-dark me-3" onclick="toggleSidebar()" style="border: none;">
             <i class="fa-solid fa-bars"></i>
         </button>
-        <h3 class="m-0">@(ViewData["Title"] ?? "Expense Tracker")</h3>
-        <div class="d-flex align-items-center">
-            @if (ViewData["navButtons"] is Dictionary<string, string> navButtons)
-            {
-                foreach (var button in navButtons)
+
+        <!-- Title -->
+        <h5 class="mx-3 mb-0 large-text flex-grow-1">@(ViewData["Title"] ?? "Expense Tracker")</h5>
+
+        <!-- Dynamic Navigation Buttons (Aligned to the left on large screens, dropdown on small) -->
+        @if (ViewData["navButtons"] is Dictionary<string, string> navButtons)
+        {
+            <!-- For larger screens (above md breakpoint) show buttons inline -->
+            <div class="d-flex align-items-center me-auto d-none d-md-flex">
+                @foreach (var button in navButtons)
                 {
-                    <a href="@button.Value" class="btn btn-dark text-white mx-2">@button.Key</a>
+                    <a href="@button.Value" class="btn btn-dark text-white text-center me-2 nav-btn">@button.Key</a>
                 }
-            }
-            <partial name="_LoginPartial" />
+            </div>
+
+            <!-- For smaller screens (below md breakpoint) show as a dropdown -->
+            <div class="dropdown d-md-none">
+                <button class="btn btn-dark text-white dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                    Menu
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    @foreach (var button in navButtons)
+                    {
+                        <li><a class="dropdown-item" href="@button.Value">@button.Key</a></li>
+                    }
+                </ul>
+            </div>
+        }
+
+        <!-- Profile and Logout Section -->
+        <ul class="navbar ms-auto  d-flex align-items-center list-unstyled m-0">
+            @if (SignInManager.IsSignedIn(User))
+            {
+                var user = await UserManager.GetUserAsync(User);
+
+     
+        <div class="dropdown">
+            <button class="btn btn-dark text-white dropdown-toggle larg  justify-content-center align-items-center" type="button" id="profileDropdownButton" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fa-solid fa-user me-2 px-3 "></i>@user.Name
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="profileDropdownButton">
+                <li>
+
+                    <a class="dropdown-item" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+      
+
+                        <i class="fa-solid fa-user me-2"></i>Profile</a>
+                </li>
+                <li>
+                    <form id="logoutForm" asp-area="Identity" asp-page="/Account/Logout"
+                          asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" class="d-inline">
+                        <button id="logout" type="submit" class="dropdown-item">
+                            <i class="fa-solid fa-sign-out-alt me-2"></i>Logout</button>
+                    </form>
+                </li>
+            </ul>
         </div>
+            }
+    </ul>
     </div>
+
+
+   
+
 
     <!-- Main Content Area -->
     <div class="main-container d-flex">
