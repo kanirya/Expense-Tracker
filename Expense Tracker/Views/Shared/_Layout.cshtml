@@ -99,7 +99,7 @@
     <div class="main-container d-flex">
         <!-- Sidebar -->
         <div class="sidebar mt-5" id="side_nav" >
-            <div class="header-box p-3">
+            <div class="header-box pt-3">
                 <h1 class="fs-4">
                     <span class="bg-white text-dark rounded shadow px-2 me-2">CL</span>
                     DIDIBYTE
@@ -107,7 +107,7 @@
             </div>
             <ul class="menu list-unstyled">
                 <li><a href="/" class="d-flex align-items-center text-decoration-none text-white py-2 px-3"><i class="fa-solid fa-home me-2"></i> Dashboard</a></li>
-                <li><a href="/Transaction" class="d-flex align-items-center text-decoration-none text-white py-2 px-3"><i class="fa-solid fa-cash-register me-2"></i> Point Of Sale</a></li>
+                <li><a href="/POS" class="d-flex align-items-center text-decoration-none text-white py-2 px-3"><i class="fa-solid fa-cash-register me-2"></i> Point Of Sale</a></li>
                 <li><a href="/Category" class="d-flex align-items-center text-decoration-none text-white py-2 px-3"><i class="fa-solid fa-arrow-right-arrow-left me-2"></i> Expenses</a></li>
                 <li><a href="/Inventory" class="d-flex align-items-center text-decoration-none text-white py-2 px-3"><i class="fa-solid fa-boxes-stacked me-2"></i> Inventory</a></li>
                 <li><a href="/Reports" class="d-flex align-items-center text-decoration-none text-white py-2 px-3"><i class="fa-solid fa-chart-simple me-2"></i> Reports</a></li>
@@ -117,7 +117,8 @@
         </div>
 
         <!-- Main Content -->
-        <div class="content" id="content_area">
+        <div class="content m-3 " id="content_area">
+          
             @RenderBody()
         </div>
     </div>

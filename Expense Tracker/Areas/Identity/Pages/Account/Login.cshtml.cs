@@ -89,7 +89,7 @@ namespace Expense_Tracker.Areas.Identity.Pages.Account
         {
             if (User.Identity.IsAuthenticated)
             {
-                Response.Redirect("/Dashboard");
+                Response.Redirect("/");
             }
             if (!string.IsNullOrEmpty(ErrorMessage))
             {

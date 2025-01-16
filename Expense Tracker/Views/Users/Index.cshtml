@@ -6,13 +6,15 @@
     {
         { "Users", "/Users" },
          { "New User", "/Identity/Account/Register" },
+         {"Roles","/AppRoles"}
     };
 
     // Store it in ViewData
     ViewData["navButtons"] = myMap;
 }
 
-<div class="row">
+
+<div class="row ">
     <div class="col-md-12">
         <ejs-grid id="UserTable" dataSource="@Model" gridLines="None" allowSorting="true" toolbar="@(new List<string>() { "Search"})" allowPaging="true" allowFiltering="true">
             <e-grid-pagesettings pageSize="80 "></e-grid-pagesettings>

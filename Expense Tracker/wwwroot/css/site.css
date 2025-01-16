@@ -731,8 +731,6 @@ textarea {
     height: 60px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 0 20px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
@@ -874,8 +872,7 @@ textarea {
 }
 
     .menu li {
-        padding: 0.5rem 1rem;
-        border-bottom: 1px solid #333;
+        padding:0;
     }
 
         .menu li a {
@@ -894,8 +891,7 @@ textarea {
 
 .content {
     flex-grow: 1;
-    margin-left: 250px;
-    padding: 1rem;
+
     transition: margin-left 0.3s ease-in-out;
 }
 
