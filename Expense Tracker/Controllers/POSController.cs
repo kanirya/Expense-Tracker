@@ -8,5 +8,12 @@ namespace Expense_Tracker.Controllers
         {
             return View();
         }
+
+        public IActionResult PointOfSale()
+        {
+            return View();
+        }
+
+
     }
 }

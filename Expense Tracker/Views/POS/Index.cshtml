@@ -1,4 +1,28 @@
 ﻿@{
 	ViewData["Title"]="Point of Sale";
+	var myMap = new Dictionary<string, string>
+	{
+		{ "Dashboard", "#" },
+		{ "Orders", "#" },
+		{ "Products", "#" },
+	};
+	// Store it in ViewData
+	ViewData["navButtons"] = myMap;
 }
-<h3>Point of sale</h3>
+
+<div class="row mb-4">
+    <div class="col-md-6">
+        <div class="widget chart p-3" style="border-radius:0px; border:1px solid black;">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="large-text">
+                        Resturent
+                    </div>
+                    <a href="@Url.Action("Index")" class="btn btn-secondary mt-5">
+                        Open Register
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

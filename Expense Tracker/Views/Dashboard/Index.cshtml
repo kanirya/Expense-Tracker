@@ -4,6 +4,13 @@
 @{
 	ViewData["Title"] = "DashBoard";
 	ViewData["isDashboard"] = true;
+	var myMap = new Dictionary<string, string>
+	{
+	{"Dashboard", "/Dashboard"},
+	{ "Configuration","#"}
+
+	};
+	ViewData["navButtons"] = myMap;
 }
 
 

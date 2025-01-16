@@ -813,7 +813,6 @@ textarea {
     padding: 1rem;
 
     display: flex;
-    justify-content: space-between;
     align-items: center;
     position: sticky;
     top: 0;
@@ -824,7 +823,13 @@ textarea {
     .appbar h3 {
         margin: 0;
     }
-
+    /* Sections */
+    .appbar .leading,
+    .appbar .title,
+    .appbar .trailing {
+        display: flex;
+        align-items: center;
+    }
 .toggle-btn {
     background: none;
     border: none;
@@ -912,3 +917,4 @@ textarea {
         display: block;
     }
 }
+
