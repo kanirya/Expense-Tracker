@@ -1,8 +1,68 @@
 ﻿
 @{
     ViewData["Title"] = "Point of sale";
+    Layout = null;
 }
-<div class="class= widget chart p-3 m-0 " style="border-radius:0px; margin:0;">
+<partial name="_POSPartial" />
 
+<div class="widget chart p-3 m-0 align-content-between  justify-content-between d-flex align-items-center" style=" border-radius:0px; margin:0; padding:0px; height:60px;">
+    <div class="nav-item">
+        <a class="btn large-text active" href="/POS" style="font-size:23px;letter-spacing:2px;color:grey">POS</a>
+    </div>
+    <div style="height: 60px; width: 100px;">
+        <img src="/images/Logo.svg" alt="Icon" style="width: 100%; height: 100%; object-fit: contain;" />
+    </div>
+
+ <div class="btn-group">
+       <div class=" align-content-center px-4">
+            <i class=" fa-solid fa-user"></i>
+       </div>
+  
+
+        <div class="dropdown">
+            <!-- Dropdown Toggle Button -->
+            <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <!-- Dropdown Menu -->
+            <ul class="dropdown-menu p-2" aria-labelledby="dropdownMenuButton">
+                <!-- First Button -->
+                <li>
+                    <button class="dropdown-item " onclick="buttonAction('Button 1')">Button 1</button>
+                </li>
+
+                <div class="dropdown-divider"></div>
+                <!-- Second Button -->
+
+                <li>
+                    <button class="dropdown-item" onclick="buttonAction('Button 2')">Orders</button>
+                </li>
+
+                <!-- Third Button -->
+                <li>
+                    <a  class="dropdown-item" asp-action="Index">Back end</a>
+                </li>
+            </ul>
+        </div>
+
+ </div>
 </div>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="widget  " style="height:500px;">
+
+        </div>
+    </div>
+</div>
+
+<script>
+    // JavaScript function to handle button clicks
+    function buttonAction(buttonName) {
+        alert(buttonName + " clicked!");
+    }
+</script>
+
+
 

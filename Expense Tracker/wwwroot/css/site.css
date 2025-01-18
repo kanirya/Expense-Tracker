@@ -16,7 +16,7 @@ html {
 
 @media (min-width: 768px) {
     html {
-        font-size: 16px;
+        font-size: 14px;
     }
 }
 
@@ -96,7 +96,7 @@ body {
 
     .e-grid .e-pagercontainer {
         border: none;
-        background-color: var(--text-black);
+        background-color: var(--white);
     }
 
     .e-grid .e-content table {
@@ -228,9 +228,6 @@ nav.navbar {
             transform: scale(1.05) translateZ(0px);
         }
 
-nav.navbar {
-    margin-left: 290px;
-}
 
 /*Profile Pic*/
 img.profile-pic {
@@ -814,7 +811,6 @@ textarea {
 }
 
 .content{
-    min-height:100vh;
     width:100%;
 }
 
@@ -931,3 +927,46 @@ textarea {
     }
 }
 
+/* Left Portion */
+.navbar-left {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between items */
+}
+
+.menu-button {
+    font-size: 20px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.logo {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* Center Portion */
+.navbar-center {
+    text-align: center;
+    flex: 1; /* Center Portion will take up available space */
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Right Portion */
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between icons/buttons */
+}
+
+.icon-button,
+.profile-button {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 18px;
+}
