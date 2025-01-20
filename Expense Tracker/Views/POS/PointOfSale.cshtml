@@ -79,6 +79,7 @@
         .items-area {
             margin-left: 20%;
             padding: 20px;
+            margin-top:40px;
             overflow-y: auto;
             height: calc(100vh - 60px);
         }
@@ -86,6 +87,7 @@
         .items-area .item {
             background-color: #ffffff;
             border: 1px solid #ddd;
+            
             border-radius: 5px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             height: 120px;
@@ -142,22 +144,14 @@
 
     <!-- Items Area -->
     <div class="items-area">
-        <div class="row g-3 mt-3">
-            <div class="col-md-4">
-                <div class="item">Item 1</div>
-                <div class="item">Item 2</div>
-                <div class="item">Item 3</div>
-            </div>
-            <div class="col-md-4">
-                <div class="item">Item 4</div>
-                <div class="item">Item 5</div>
-                <div class="item">Item 6</div>
-            </div>
-            <div class="col-md-4">
-                <div class="item">Item 7</div>
-                <div class="item">Item 8</div>
-                <div class="item">Item 9</div>
-            </div>
+        <div class="row g-3 mt-3 ">
+           @{ for(int i=1;i<=10;i++){
+                    <div class="col-md-3">
+
+                    <div class="item mx-2">Item @i</div></div>
+           }}
+               
+            
         </div>
     </div>
 

@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Expense_Tracker.Models.Product>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var myMap = new Dictionary<string, string>
+    {
+        { "Operations", "#" },
+        { "Orders", "#" },
+        { "Products", "/Inventory" },
+    };
+    // Store it in ViewData
+    ViewData["navButtons"] = myMap;
+}
+
+
+<body>
+
+    <div class="widget m-0" style="height:60px;border-radius:0px;">
+    </div>
+  
+
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <a asp-action="Create" class="btn btn-secondary">Add New Product</a>
+    </div>
+
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-3">
+                <div class="card shadow-sm mb-4">
+                    <!-- Placeholder for product image -->
+
+                    <div class="card-body">
+                        <h5 class="card-title">@item.Name</h5>
+                        <p class="card-text text-muted">Price: $@item.SalesPrice</p>
+                        
+                        <div class="d-flex justify-content-between">
+                            <a asp-action="Edit" asp-route-id="@item.ProductId" class="btn btn-sm btn-warning">Edit</a>
+                            <a asp-action="Details" asp-route-id="@item.ProductId" class="btn btn-sm btn-info">Details</a>
+                            <a asp-action="Delete" asp-route-id="@item.ProductId" class="btn btn-sm btn-danger">Delete</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+</body>
