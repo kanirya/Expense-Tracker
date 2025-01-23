@@ -666,22 +666,6 @@ textarea {
 }
 
 
-
-.appbar {
-    background-color: var(--white);
-    color: var(--text-black);
-    font-family:"Poppins";
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1030;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-}
-
 .sidebar {
     background-color: var(--white);
     color: var(--text-black);
@@ -726,25 +710,11 @@ textarea {
     }
 
 
-/* Appbar styles */
-.appbar {
-    background-color: var(--white);
-    color: var(--background);
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1030;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
 
 /* Sidebar styles */
 .sidebar {
     background-color: var(--white);
-    color: var(--text-black);
+    color: var(--dark-blue);
     position: fixed;
     top: 60px; /* Starts below the appbar */
     left: 0;
@@ -812,18 +782,16 @@ textarea {
 }
 
 
-
+/*Appbars*/
 .appbar {
-    background-color: var(--white);
-    color: var(--text-black);
+    background-color: var(--dark-blue);
+    color: var(--white);
     padding: 1rem;
-
     display: flex;
     align-items: center;
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
     .appbar h3 {

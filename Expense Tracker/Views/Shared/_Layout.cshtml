@@ -27,14 +27,14 @@
      @{
             if (ViewData["Title"] != "Point of sale") {
     <!-- AppBar -->
-    <div class="appbar d-flex align-items-center px-3" style="height: 50px;  color: black;">
+    <div class="appbar d-flex align-items-center px-3" style="height: 50px;  color: white;">
         <!-- Sidebar Toggle Button -->
         <button class="toggle-btn btn btn-close text-black me-3" onclick="toggleSidebar()" style="border: none; ">
             <i class="fa-solid fa-bars" ></i>
         </button>
 
         <!-- Title -->
-        <button type="button" class="btn large-text text-black" style="font-size:21px;">@(ViewData["Title"] ?? "Expense Tracker")</button>
+        <button type="button" class="btn large-text text-white" style="font-size:21px;">@(ViewData["Title"] ?? "Expense Tracker")</button>
 
         <!-- Dynamic Navigation Buttons (Aligned to the left on large screens, dropdown on small) -->
         @if (ViewData["navButtons"] is Dictionary<string, string> navButtons)
@@ -49,6 +49,7 @@
                     }
                 </div>
             </div>
+
 
             <!-- For smaller screens (below md breakpoint) show as a dropdown -->
             <div class="dropdown d-md-none">
