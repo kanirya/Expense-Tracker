@@ -26,9 +26,46 @@
 					</div>
 
 				</div>
+				<div class="form-check-inline">
+					<label class="form-check-label">
+						<input type="checkbox" class="form-check-input" value="">Point of sale
+					</label>
+				</div>
+				<div class="form-check-inline">
+					<label class="form-check-label">
+						<input type="checkbox" class="form-check-input" value="">Purchase
+					</label>
+				</div>
+				<div class="form-check-inline">
+					<label class="form-check-label">
+						<input type="checkbox" class="form-check-input" value="" disabled>Sales
+					</label>
+				</div>
 
+				<div class="row">
+					<div class="col-md-6">
+						<div class="row">
+							<div class="col-md-5">
+								Invoice Policey
+							</div>
+							<div class="col-md-7">
+								<div class="form-group">
+									<label for="sel1">Select list:</label>
+									<select class="form-control" id="sel1">
+										<option>1</option>
+										<option>2</option>
+										<option>3</option>
+										<option>4</option>
+									</select>
+								</div>
+							</div>
+						</div>
+						
 
-				<div class="form-group">
+					</div>
+				</div>
+
+			<div class="form-group">
 					<label asp-for="InternalReference">Internal Reference</label>
 					<input asp-for="InternalReference" class="form-control" placeholder="Enter internal reference" />
 					<span asp-validation-for="InternalReference" class="text-danger"></span>
