@@ -1,0 +1,243 @@
+﻿@model Expense_Tracker.Models.DTOs.ProductVM
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@* <div class="row"> *@
+@*     <div class="col-md-4"> *@
+@*         <!-- Use enctype="multipart/form-data" to allow file uploads --> *@
+@*         <form asp-action="Create" enctype="multipart/form-data"> *@
+@*             <div asp-validation-summary="ModelOnly" class="text-danger"></div> *@
+
+@*             <!-- Name input --> *@
+@*             <div class="form-group"> *@
+@*                 <label asp-for="Name" class="control-label" style="display:flex;"></label> *@
+@*                 <input asp-for="Name" class="form-control" /> *@
+@*                 <span asp-validation-for="Name" class="text-danger"></span> *@
+@*             </div> *@
+
+@*             <!-- Price input --> *@
+@*             <div class="form-group"> *@
+@*                 <label asp-for="Price" class="control-label"></label> *@
+@*                 <input asp-for="Price" class="form-control" /> *@
+@*                 <span asp-validation-for="Price" class="text-danger"></span> *@
+@*             </div> *@
+
+@*             <!-- Photo (Image upload) input --> *@
+@*             <div class="form-group"> *@
+@*                 <label asp-for="Photo" class="control-label"></label> *@
+@*                 <input asp-for="Photo" class="form-control" type="file" /> *@
+@*                 <span asp-validation-for="Photo" class="text-danger"></span> *@
+@*             </div> *@
+
+@*             <!-- Submit button --> *@
+@*             <div class="form-group"> *@
+@*                 <input type="submit" value="Create" class="btn btn-primary" /> *@
+@*             </div> *@
+@*         </form> *@
+@*     </div> *@
+@* </div> *@
+
+@* <div> *@
+@*     <a asp-action="Index">Back to List</a> *@
+@* </div>﻿ *@
+
+<div class="row m-3">
+	<div class="col-md-12">
+		<div class="form-container">
+			<form asp-action="Create" enctype="multipart/form-data">
+				<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+				<div class="row justify-content-between">
+					<div class="col-9">
+						<div class="form-group">
+							<label asp-for="Name" class="control-label" style="display:flex;"></label>
+							<input asp-for="Name" class="form-control" />
+							<span asp-validation-for="Name" class="text-danger"></span>
+						</div>
+					</div>
+					<div class="col-2">
+						<div class="image-upload-container">
+							<label for="photo-input" class="image-box align-items-center align-content-center">
+								<img id="preview-image" class="preview-image" src="https://via.placeholder.com/150" alt="Click to upload" />
+								<span id="placeholder-icon" class="placeholder-icon">📷</span>
+							</label>
+							<input asp-for="Photo" id="photo-input" accept="image/*" style="display: none;" />
+						</div>
+					</div>
+				</div>
+
+				<hr />
+				<div class="row">
+					<div class="col-md-6"></div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label asp-for="Price" class="control-label"></label>
+							<input asp-for="Price" class="form-control" />
+							<span asp-validation-for="Price" class="text-danger"></span>
+						</div>
+					</div>
+
+					<div class="m-4">
+						<div class="form-group">
+							<input type="submit" value="Create" class="btn btn-primary" />
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+
+<style>
+	/* Scoped Form Styling */
+	.form-container {
+		background: #fff;
+		padding: 20px;
+		border-radius: 8px;
+		border: 1px solid #e0e0e0;
+	}
+
+		.form-container h4 {
+			font-size: 20px;
+			font-weight: 600;
+			margin-bottom: 1.5rem;
+			color: #333;
+		}
+
+		/* Form Input Styling */
+		.form-container .form-group {
+			margin-bottom: 1.2rem;
+			position: relative;
+		}
+
+		.form-container label {
+			display: block;
+			font-size: 14px;
+			color: #555;
+			margin-bottom: 0.5rem;
+		}
+
+		.form-container .form-control {
+			border: none !important;
+			border-bottom: 1px solid #ddd !important;
+			border-radius: 0 !important;
+			box-shadow: none !important;
+			padding: 0.5rem 0;
+			background: transparent;
+			color: #333;
+			font-size: 14px;
+			width: 100%;
+			transition: border-color 0.3s ease;
+		}
+
+			.form-container .form-control:focus {
+				border-bottom: 1px solid #000 !important;
+				outline: none !important;
+			}
+
+			.form-container .form-control::placeholder {
+				color: #aaa;
+				font-size: 13px;
+			}
+
+	/* Remove default styling from checkboxes */
+	.form-check-input {
+		margin-right: 0.5rem;
+	}
+
+	/* Buttons */
+	.form-container .btn-primary {
+		background-color: #007bff;
+		color: white;
+		border: none;
+		padding: 0.5rem 1.2rem;
+		font-size: 14px;
+		border-radius: 4px;
+		transition: background-color 0.3s ease;
+	}
+
+		.form-container .btn-primary:hover {
+			background-color: #0056b3;
+		}
+
+	.form-container a {
+		text-decoration: none;
+		color: #007bff;
+		transition: color 0.3s;
+	}
+
+		.form-container a:hover {
+			color: #0056b3;
+		}
+
+	.image-upload-container {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.image-box {
+		width: 100px;
+		height: 100px;
+		border: 2px dashed #ccc;
+		border-radius: 8px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		cursor: pointer;
+		overflow: hidden;
+		position: relative;
+		background-color: #f9f9f9;
+		transition: border-color 0.3s;
+	}
+
+		.image-box:hover {
+			border-color: #007bff;
+		}
+
+	.preview-image {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		display: none; /* Initially hidden */
+	}
+
+	.placeholder-icon {
+		font-size: 2rem;
+		color: #aaa;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+</style>
+
+<script>
+	document.getElementById("photo-input").addEventListener("change", function (event) {
+		const file = event.target.files[0];
+		const previewImage = document.getElementById("preview-image");
+		const placeholderIcon = document.getElementById("placeholder-icon");
+		const container = document.getElementById("image-container");
+
+		if (file) {
+			const reader = new FileReader();
+
+			// Once the file is loaded, update the preview image
+			reader.onload = function (e) {
+				previewImage.src = e.target.result;
+				previewImage.style.display = "block"; // Show the image
+				placeholderIcon.style.display = "none"; // Hide the placeholder
+			};
+
+			reader.readAsDataURL(file);
+		} else {
+			// Reset to placeholder if no file is selected
+			previewImage.src = "";
+			previewImage.style.display = "none";
+			placeholderIcon.style.display = "flex";
+		}
+	});
+</script>
