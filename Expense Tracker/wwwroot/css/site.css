@@ -294,7 +294,7 @@ img.profile-pic {
 
     #sidebar-toggler:hover {
         cursor: pointer;
-        background-color: var(--white);
+        background-color: var(--blue-light);
         transform: scale(1.05) translateZ(0px);
     }
 
@@ -686,7 +686,7 @@ textarea {
     }
 
         .sidebar a:hover {
-            background-color: #495057;
+            background-color: var(--blue-light);
         }
 
 
@@ -733,7 +733,7 @@ textarea {
     }
 
         .sidebar a:hover {
-            background-color: #495057;
+            background-color: var(--blue-medium);
         }
 
     .sidebar .sidebar-header {

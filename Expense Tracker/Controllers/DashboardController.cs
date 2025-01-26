@@ -9,12 +9,12 @@ using Microsoft.EntityFrameworkCore;
 namespace Expense_Tracker.Controllers
 {
 
-    [Authorize(Roles ="Admin")]
+    [Authorize(Roles = "Admin")]
     public class DashboardController : Controller
     {
         private readonly ApplicationDbContext _context;
         CultureInfo culture = CultureInfo.CreateSpecificCulture("ur-Pk");
-      
+
         public DashboardController(ApplicationDbContext context)
         {
             _context = context;
@@ -41,14 +41,14 @@ namespace Expense_Tracker.Controllers
             // Total Expense
             int TotalExpense = SelectedTransactions.Where(i => i.Category.Type == "Expense").Sum(j => j.Amount);
             ViewBag.TotalExpense = TotalExpense.ToString("C0");
-          
+
             ViewBag.TotalExpense = String.Format(culture, "{0:C0}", TotalExpense);
             // Balance
 
             int Balance = TotalIncome - TotalExpense;
-           
-           
-            ViewBag.Balance = String.Format(culture,"{0:C0}",Balance);
+
+
+            ViewBag.Balance = String.Format(culture, "{0:C0}", Balance);
             // chart
             ViewBag.DoughnutChartData = SelectedTransactions.
                 Where(i => i.Category.Type == "Expense").GroupBy(j => j.Category.CategoryId)
@@ -57,22 +57,22 @@ namespace Expense_Tracker.Controllers
                     categoryTitleWithIcon = k.First().Category.Icon + " " + k.First().Category.Tital,
                     amount = k.Sum(j => j.Amount),
                     formattedAmount = k.Sum(j => j.Amount).ToString("C0", CultureInfo.CreateSpecificCulture("en-PK")),
-        }).OrderByDescending(l=>l.amount).ToList();
+                }).OrderByDescending(l => l.amount).ToList();
 
             //Spine chart
             List<SplineChartData> IncomeSummary = SelectedTransactions.Where(i => i.Category.Type == "Income")
               .GroupBy(j => j.Date).Select(k => new SplineChartData()
               {
-                  day=k.First().Date.ToString("dd-MMM"),
-                  income=k.Sum(l=>l.Amount),
-              }).ToList();  
-            
-            
+                  day = k.First().Date.ToString("dd-MMM"),
+                  income = k.Sum(l => l.Amount),
+              }).ToList();
+
+
             List<SplineChartData> ExpenseSummary = SelectedTransactions.Where(i => i.Category.Type == "Expense")
               .GroupBy(j => j.Date).Select(k => new SplineChartData()
               {
-                  day=k.First().Date.ToString("dd-MMM"),
-                  expense=k.Sum(l=>l.Amount),
+                  day = k.First().Date.ToString("dd-MMM"),
+                  expense = k.Sum(l => l.Amount),
               }).ToList();
 
 
@@ -104,12 +104,22 @@ namespace Expense_Tracker.Controllers
 
             return View();
         }
-    }
 
-    public class SplineChartData
-    {
-        public string day;
-        public int income;
-        public int expense;
+
+
+
+
+        public IActionResult DashboardDetails()
+        {
+            return View();
+        }
+
+        public class SplineChartData
+        {
+            public string day;
+            public int income;
+            public int expense;
+        }
+
     }
 }
