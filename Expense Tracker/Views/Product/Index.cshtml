@@ -3,6 +3,12 @@
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var menuItmes = new Dictionary<string, string>
+    {
+        {"Product", "/Product"},
+        {"Setting","#"}
+    };
+    ViewData["NavButtons"] = menuItmes;
 }
 
 <h1 class="my-4">Product List</h1>
@@ -10,6 +16,31 @@
 <p>
     <a class="btn btn-primary" asp-action="Create">Create New</a>
 </p>
+
+
+<div class="m-3">
+    <div class="row">
+    @{
+        foreach(var item in Model){
+              <div class="col" style="min-width:280px; max-width:320px;">
+        <div class="widget p-4">
+                    @if (!string.IsNullOrEmpty(item.image_path))
+                    {
+                        <img src="@item.image_path" alt="Product Image" class="img-fluid" style="max-width: 100px; max-height: 100px;" />
+                    }
+                    else
+                    {
+                        <span>No Image</span>
+                    }
+                    <div class=" large-text">@item.Name</div> 
+                    <h5 >@item.Price</h5> 
+        </div>
+    </div>
+        }
+    }
+  
+</div>
+</div>
 
 <table class="table table-bordered table-striped">
     <thead class="thead-dark">
