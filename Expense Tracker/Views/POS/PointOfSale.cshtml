@@ -46,13 +46,12 @@
         /* Left Control Panel */
         .left-control {
             position: fixed;
-            top: 60px;
+            top: 70px;
+            border-radius:5px;
+            background:red;
             left: 0;
-            width: 28%;
-            height: calc(100vh - 60px);
-            background-color: #ffffff;
-            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-            padding: 10px;
+            width: 32%;
+            height: calc(100vh - 63px);
             overflow-y: auto;
         }
 
@@ -61,7 +60,7 @@
             border: 1px solid #ddd;
             border-radius: 5px;
             padding: 15px;
-            margin-bottom: 15px;
+           
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
@@ -79,8 +78,10 @@
 
         /* Items Area */
         .items-area {
-            margin-left: 28%;
-            padding: 20px;
+            margin-left: 33%;
+            padding-right: 20px;
+            padding-top: 20px;
+            padding-left: 20px;
             margin-top:40px;
             overflow-y: auto;
             height: calc(100vh - 60px);
@@ -148,8 +149,10 @@
                 aria-expanded="false">
                 Menu
             </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton" >
+            <ul class="dropdown-menu p-1" aria-labelledby="dropdownMenuButton" >
+               
                 <li><a class="dropdown-item" href="#">Orders</a></li>
+                <li class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="/POS">Backend</a></li>
                 <li><a class="dropdown-item" href="#">Settings</a></li>
             </ul>
@@ -157,19 +160,34 @@
     </div>
 
     <!-- Left Control Panel -->
-    <div class="left-control">
-        <div class="widget">
+    <div class="left-control justify-content-between">
+        <div class="widget h-80" style="height:73%; margin-bottom:15px;">
             <h5>Control Panel</h5>
             <p>Start adding products</p>
             <button class="btn btn-primary w-100">Release Order</button>
         </div>
+
+
         <div class="widget">
-            <h5>Customer</h5>
+            <div class="row">
+                <div class="col-6">
+                    <div class="widget">
+                        <h5>Customer</h5>
+                    </div>
+
+                </div>
+                <div class="col-6">
+                    <div class="widget">
+                        <h5>Kitchen Note</h5>
+                    </div>
+
+                </div>
+            </div>
+
         </div>
-        <div class="widget">
-            <h5>Kitchen Note</h5>
-        </div>
-        <div class="widget">
+     
+       
+        <div class="widget" style="bottom:0;position:absolute;width:100%;">
             <h5>Actions</h5>
         </div>
     </div>
