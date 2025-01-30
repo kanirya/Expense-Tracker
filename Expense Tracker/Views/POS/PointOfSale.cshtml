@@ -16,6 +16,7 @@
             background-color: #f7f7f7;
         }
 
+
         /* AppBar Styling */
         .appbar {
             position: fixed;
@@ -47,7 +48,7 @@
             position: fixed;
             top: 60px;
             left: 0;
-            width: 20%;
+            width: 28%;
             height: calc(100vh - 60px);
             background-color: #ffffff;
             box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
@@ -78,7 +79,7 @@
 
         /* Items Area */
         .items-area {
-            margin-left: 20%;
+            margin-left: 28%;
             padding: 20px;
             margin-top:40px;
             overflow-y: auto;
@@ -143,12 +144,13 @@
         <div class="logo">POS</div>
 
         <div class="dropdown">
-            <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
+            <button class="btn btn-light  dropdown-toggle"  type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
                 aria-expanded="false">
                 Menu
             </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton" >
                 <li><a class="dropdown-item" href="#">Orders</a></li>
+                <li><a class="dropdown-item" href="/POS">Backend</a></li>
                 <li><a class="dropdown-item" href="#">Settings</a></li>
             </ul>
         </div>
@@ -173,7 +175,6 @@
     </div>
 
     <!-- Items Area -->
-    <!-- Items Area -->
     <div class="items-area">
         <div class="row g-3 mt-3">
             @foreach (var item in Model)
@@ -191,7 +192,6 @@
     </div>
 
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

@@ -11,35 +11,63 @@
     ViewData["NavButtons"] = menuItmes;
 }
 
+
 <h1 class="my-4">Product List</h1>
 
 <p>
     <a class="btn btn-primary" asp-action="Create">Create New</a>
 </p>
 
-
 <div class="m-3">
     <div class="row">
-    @{
-        foreach(var item in Model){
-              <div class="col" style="min-width:280px; max-width:320px;">
-        <div class="widget p-4">
-                    @if (!string.IsNullOrEmpty(item.image_path))
-                    {
-                        <img src="@item.image_path" alt="Product Image" class="img-fluid" style="max-width: 100px; max-height: 100px;" />
-                    }
-                    else
-                    {
-                        <span>No Image</span>
-                    }
-                    <div class=" large-text">@item.Name</div> 
-                    <h5 >@item.Price</h5> 
-        </div>
-    </div>
+        @{
+            foreach (var item in Model)
+            {
+                <div class="col-md-4 col-lg-3 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <!-- Card Image -->
+                        @if (!string.IsNullOrEmpty(item.image_path))
+                        {
+                            <img src="@item.image_path" alt="Product Image" class="card-img-top img-fluid" style="height: 200px; object-fit: cover;" />
+                        }
+                        else
+                        {
+                            <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 200px;">
+                                <span class="text-muted">No Image</span>
+                            </div>
+                        }
+
+                        <!-- Card Body -->
+                        <div class="card-body">
+                            <h5 class="card-title">@item.Name</h5>
+                            <h6 class="text-primary">@item.Price</h6>
+                           
+                        </div>
+                        
+
+                        <!-- Dropdown Button -->
+                        <div class="position-absolute" style="top: 10px; right: 10px;">
+                            <div class="dropdown">
+                                <button class="btn btn-light btn-sm rounded-circle " type="button" id="profileDropdownButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa-solid fa-ellipsis-v"></i>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="profileDropdownButton">
+
+                                    <li>
+                                        <a class="dropdown-item " asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                                        <a class="dropdown-item" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                                        <a class="dropdown-item" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                                      
+                                    </li>
+                                   
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
         }
-    }
-  
-</div>
+    </div>
 </div>
 
 <table class="table table-bordered table-striped">
