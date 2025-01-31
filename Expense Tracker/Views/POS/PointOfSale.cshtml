@@ -3,19 +3,18 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>POS Layout</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
-    <style>
-        /* General Reset */
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>POS Layout</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+	<style>
+		/* General Reset */
         body {
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
             background-color: #f7f7f7;
         }
-
 
         /* AppBar Styling */
         .appbar {
@@ -33,56 +32,62 @@
             z-index: 1000;
         }
 
-        .appbar .logo {
-            font-size: 20px;
-            font-weight: bold;
-            color: #333;
-        }
-
-        .appbar .dropdown {
-            font-size: 16px;
-        }
+            .appbar .logo {
+                font-size: 20px;
+                font-weight: bold;
+                color: #333;
+            }
 
         /* Left Control Panel */
         .left-control {
             position: fixed;
             top: 70px;
-            border-radius:5px;
-            background:red;
             left: 0;
             width: 32%;
-            height: calc(100vh - 63px);
+            height: calc(100vh - 70px);
             overflow-y: auto;
+            padding: 10px;
+            background: #fff;
+            border-right: 1px solid #ddd;
         }
 
-        .left-control .widget {
-            background-color: #f9f9f9;
+        .widget {
+            background-color: white;
             border: 1px solid #ddd;
             border-radius: 5px;
             padding: 15px;
-           
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        .left-control .widget h5 {
-            font-size: 16px;
             margin-bottom: 10px;
-            color: #333;
         }
 
-        .left-control .btn {
-            background-color: #007bff;
-            color: #fff;
-            border: none;
+        .cart-items {
+            list-style: none;
+            padding: 0;
+            margin: 0;
         }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px;
+            font-family:"Poppins";
+            font-size:13px;
+            border-bottom: 1px solid #ddd;
+        }
+
+            .cart-item img {
+                width: 40px;
+                height: 40px;
+                border-radius: 5px;
+                margin-right: 10px;
+            }
 
         /* Items Area */
         .items-area {
             margin-left: 33%;
-            padding-right: 20px;
-            padding-top: 20px;
-            padding-left: 20px;
-            margin-top:40px;
+            padding: 20px;
+            margin-top: 40px;
             overflow-y: auto;
             height: calc(100vh - 60px);
         }
@@ -100,15 +105,13 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             margin: 10px;
             text-align: center;
+            cursor: pointer;
         }
 
         .image-container {
             width: 150px;
             height: 150px;
             overflow: hidden;
-            border-top-left-radius:5px;
-            border-top-right-radius:5px;
-            background-color: #f9f9f9;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -117,99 +120,130 @@
         .preview-image {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Ensures the image fits without stretching */
+            object-fit: cover;
         }
 
         .image-text {
             font-size: 14px;
             font-weight: bold;
             color: #333;
-            background-color: #ffc9c9; /* Example background color */
             padding: 5px;
             width: 100%;
-            border-bottom-left-radius: 5px;
-            border-bottom-right-radius: 5px;
-            object-fit:cover
+            background-color: #ffc9c9;
         }
 
         .items-area .item:hover {
             background-color: #f8f9fa;
-            cursor: pointer;
         }
-    </style>
+	</style>
 </head>
 
 <body>
-    <!-- AppBar -->
-    <div class="appbar">
-        <div class="logo">POS</div>
+	<!-- AppBar -->
+	<div class="appbar">
+		<div class="logo">POS</div>
 
-        <div class="dropdown">
-            <button class="btn btn-light  dropdown-toggle"  type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
-                aria-expanded="false">
-                Menu
-            </button>
-            <ul class="dropdown-menu p-1" aria-labelledby="dropdownMenuButton" >
-               
-                <li><a class="dropdown-item" href="#">Orders</a></li>
-                <li class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="/POS">Backend</a></li>
-                <li><a class="dropdown-item" href="#">Settings</a></li>
-            </ul>
+		<div class="dropdown">
+			<button class="btn btn-light  dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
+					aria-expanded="false">
+				Menu
+			</button>
+			<ul class="dropdown-menu p-1" aria-labelledby="dropdownMenuButton">
+
+				<li><a class="dropdown-item" href="#">Orders</a></li>
+				<li class="dropdown-divider"></li>
+				<li><a class="dropdown-item" href="/POS">Backend</a></li>
+				<li><a class="dropdown-item" href="#">Settings</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<!-- Left Control Panel -->
+	<div class="left-control justify-content-between" >
+        <div class="widget" style="height:150px;">
+            <h5>Cart</h5>
+            <ul id="cart-items" class="cart-items"></ul>
+            <button class="btn btn-primary w-100" onclick="processOrder()">Process Order</button>
         </div>
-    </div>
-
-    <!-- Left Control Panel -->
-    <div class="left-control justify-content-between">
-        <div class="widget h-80" style="height:73%; margin-bottom:15px;">
-            <h5>Control Panel</h5>
-            <p>Start adding products</p>
-            <button class="btn btn-primary w-100">Release Order</button>
-        </div>
 
 
-        <div class="widget">
-            <div class="row">
-                <div class="col-6">
-                    <div class="widget">
-                        <h5>Customer</h5>
+		<div class="widget">
+			<h5>Customer</h5>
+		</div>
+
+		<div class="widget" style="bottom:0;position:absolute;width:100%;">
+			<h5>Actions</h5>
+		</div>
+	</div>
+
+	<!-- Items Area -->
+	<div class="items-area">
+		<div class="row g-3 mt-3">
+			@foreach (var item in Model)
+			{
+                    <div class="item" onclick="addToCart('@item.Name', '@item.image_path', @item.Price)">
+                        <div class="image-container">
+                            <img src="@item.image_path" alt="Product Image" class="preview-image" />
+                        </div>
+                        <div class="image-text">
+                            @item.Name - Rs @item.Price
+                        </div>
                     </div>
+			}
+		</div>
+	</div>
 
-                </div>
-                <div class="col-6">
-                    <div class="widget">
-                        <h5>Kitchen Note</h5>
-                    </div>
+    <script>
+        let cart = [];
 
-                </div>
-            </div>
+        function addToCart(name, image, price) {
+            let existingItem = cart.find(item => item.name === name);
 
-        </div>
-     
-       
-        <div class="widget" style="bottom:0;position:absolute;width:100%;">
-            <h5>Actions</h5>
-        </div>
-    </div>
-
-    <!-- Items Area -->
-    <div class="items-area">
-        <div class="row g-3 mt-3">
-            @foreach (var item in Model)
-            {
-                <div class="item">
-                    <div class="image-container">
-                        <img src="@item.image_path" alt="Product Image" class="preview-image" />
-                    </div>
-                    <div class="image-text">
-                        @item.Name <!-- Replace with your actual property for the name -->
-                    </div>
-                </div>
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                cart.push({ name, image, price, quantity: 1 });
             }
-        </div>
-    </div>
 
+            updateCart();
+        }
+
+        function updateCart() {
+            let cartContainer = document.getElementById("cart-items");
+            cartContainer.innerHTML = "";
+
+            cart.forEach(item => {
+                let listItem = document.createElement("li");
+                listItem.classList.add("cart-item");
+                listItem.innerHTML = `
+                    
+                    <span>${item.name} x${item.quantity} - Rs ${item.price * item.quantity}</span>
+                    <button onclick="removeItem('${item.name}')" class="btn btn-sm btn-light">X</button>
+                `;
+                cartContainer.appendChild(listItem);
+            });
+        }
+
+        function removeItem(name) {
+            cart = cart.filter(item => item.name !== name);
+            updateCart();
+        }
+
+        function processOrder() {
+            if (cart.length === 0) {
+                alert("No items in cart.");
+                return;
+            }
+
+            console.log("Processing Order:", cart);
+            alert("Order placed successfully!");
+
+            cart = [];
+            updateCart();
+        }
+    </script>
 
 </body>
-
 </html>
+
+
