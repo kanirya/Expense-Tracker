@@ -47,8 +47,6 @@
             height: calc(100vh - 70px);
             overflow-y: auto;
             padding: 10px;
-            background: #fff;
-            border-right: 1px solid #ddd;
         }
 
         .widget {
@@ -160,8 +158,9 @@
 
 	<!-- Left Control Panel -->
 	<div class="left-control justify-content-between" >
-        <div class="widget" style="height:150px;">
-            <h5>Cart</h5>
+        <div class="widget" style=" flex-grow: 1;
+    overflow-y: auto;  
+    max-height: 250px;">
             <ul id="cart-items" class="cart-items"></ul>
             <button class="btn btn-primary w-100" onclick="processOrder()">Process Order</button>
         </div>
