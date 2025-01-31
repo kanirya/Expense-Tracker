@@ -133,6 +133,23 @@
         .items-area .item:hover {
             background-color: #f8f9fa;
         }
+        .custom-button{
+            background:#ffffff;
+            cursor:pointer;
+            font-family:"Poppins";
+            font-weigth:bold;
+            font-size:18px;
+            button-size:small;
+        }
+        .custom-button:hover{
+            background:#E9ECEC;
+             cursor:pointer;
+            font-family:"Poppins";
+            font-size:18px;
+            button-size:small;
+           
+        }
+       
 	</style>
 </head>
 
@@ -169,10 +186,16 @@
 		<div class="widget">
 			<h5>Customer</h5>
 		</div>
-
-		<div class="widget" style="bottom:0;position:absolute;width:100%;">
-			<h5>Actions</h5>
-		</div>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+               <a onclick="processOrder()" class=" btn custom-button large-text p-4" style="bottom:0;position:absolute; width:45%;color:dimgrey;">Order</a>
+            </div><div class="col-md-6">
+               
+                    <a onclick="processOrder()" class=" btn custom-button large-text p-4" style="bottom:0;position:absolute; width:45%;color:dimgrey;">Order</a>
+                
+            </div>
+        </div>
+		
 	</div>
 
 	<!-- Items Area -->
