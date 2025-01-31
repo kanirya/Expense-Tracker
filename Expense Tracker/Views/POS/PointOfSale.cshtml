@@ -44,8 +44,9 @@
             top: 70px;
             left: 0;
             width: 32%;
+
             height: calc(100vh - 70px);
-            overflow-y: auto;
+            overflow: auto;
             padding: 10px;
         }
 
@@ -68,19 +69,21 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 5px;
+            padding: 10px;
             font-family:"Poppins";
-            font-size:13px;
-            border-bottom: 1px solid #ddd;
+            font-size:14px;
+        }
+        .cart-item:hover {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 7px;
+            background:#f7f7f7;
+            font-family:"Poppins";
+            font-size:14px;
         }
 
-            .cart-item img {
-                width: 40px;
-                height: 40px;
-                border-radius: 5px;
-                margin-right: 10px;
-            }
-
+        
         /* Items Area */
         .items-area {
             margin-left: 33%;
@@ -137,17 +140,18 @@
             background:#ffffff;
             cursor:pointer;
             font-family:"Poppins";
-            font-weigth:bold;
             font-size:18px;
-            button-size:small;
         }
         .custom-button:hover{
             background:#E9ECEC;
              cursor:pointer;
             font-family:"Poppins";
             font-size:18px;
-            button-size:small;
            
+        }
+        .image-logo{
+            width:100px;
+            height:80px;
         }
        
 	</style>
@@ -157,12 +161,13 @@
 	<!-- AppBar -->
 	<div class="appbar">
 		<div class="logo">POS</div>
-
+        <img src="~/Images/Logo.svg" class="image-logo" />
 		<div class="dropdown">
 			<button class="btn btn-light  dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
 					aria-expanded="false">
 				Menu
 			</button>
+           
 			<ul class="dropdown-menu p-1" aria-labelledby="dropdownMenuButton">
 
 				<li><a class="dropdown-item" href="#">Orders</a></li>
@@ -178,8 +183,8 @@
         <div class="widget" style=" flex-grow: 1;
     overflow-y: auto;  
     max-height: 250px;">
+        
             <ul id="cart-items" class="cart-items"></ul>
-            <button class="btn btn-primary w-100" onclick="processOrder()">Process Order</button>
         </div>
 
 
