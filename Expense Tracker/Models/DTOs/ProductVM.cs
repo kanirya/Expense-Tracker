@@ -10,6 +10,7 @@ namespace Expense_Tracker.Models.DTOs
         [Required]
         public int Price { get; set; }
         [Required]
+        public int Quantity { get; set; }
         public IFormFile Photo { get; set; } = null!;
     }
 }

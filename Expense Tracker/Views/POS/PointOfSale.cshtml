@@ -9,151 +9,156 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
 	<style>
 		/* General Reset */
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f7f7f7;
-        }
+		body {
+			margin: 0;
+			padding: 0;
+			font-family: Arial, sans-serif;
+			background-color: #f7f7f7;
+		}
 
-        /* AppBar Styling */
-        .appbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            height: 60px;
-            background-color: #ffffff;
-            border-bottom: 1px solid #ddd;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 20px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            z-index: 1000;
-        }
+		/* AppBar Styling */
+		.appbar {
+			position: fixed;
+			top: 0;
+			width: 100%;
+			height: 60px;
+			background-color: #ffffff;
+			border-bottom: 1px solid #ddd;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 0 20px;
+			box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+			z-index: 1000;
+		}
 
-            .appbar .logo {
-                font-size: 20px;
-                font-weight: bold;
-                color: #333;
-            }
+			.appbar .logo {
+				font-size: 20px;
+				font-weight: bold;
+				color: #333;
+			}
 
-        /* Left Control Panel */
-        .left-control {
-            position: fixed;
-            top: 70px;
-            left: 0;
-            width: 32%;
+		/* Left Control Panel */
+		.left-control {
+			position: fixed;
+			top: 70px;
+			left: 0;
+			width: 32%;
+			height: calc(100vh - 70px);
+			overflow: auto;
+			padding: 10px;
+		}
 
-            height: calc(100vh - 70px);
-            overflow: auto;
-            padding: 10px;
-        }
+		.widget {
+			background-color: white;
+			border: 1px solid #ddd;
+			border-radius: 5px;
+			padding: 15px;
+			box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+			margin-bottom: 10px;
+		}
 
-        .widget {
-            background-color: white;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            padding: 15px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            margin-bottom: 10px;
-        }
+		.cart-items {
+			list-style: none;
+			padding: 0;
+			margin: 0;
+		}
 
-        .cart-items {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
+		.cart-item {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 10px;
+			font-family: "Poppins";
+			font-size: 14px;
+		}
 
-        .cart-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px;
-            font-family:"Poppins";
-            font-size:14px;
-        }
-        .cart-item:hover {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 7px;
-            background:#f7f7f7;
-            font-family:"Poppins";
-            font-size:14px;
-        }
+			.cart-item:hover {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				padding: 7px;
+				background: #f7f7f7;
+				font-family: "Poppins";
+				font-size: 14px;
+			}
 
-        
-        /* Items Area */
-        .items-area {
-            margin-left: 33%;
-            padding: 20px;
-            margin-top: 40px;
-            overflow-y: auto;
-            height: calc(100vh - 60px);
-        }
 
-        .item {
-            width: 150px;
-            height: 170px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-between;
-            background-color: #ffffff;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            margin: 10px;
-            text-align: center;
-            cursor: pointer;
-        }
+		/* Items Area */
+		.items-area {
+			margin-left: 33%;
+			padding: 20px;
+			margin-top: 40px;
+			overflow-y: auto;
+			height: calc(100vh - 60px);
+		}
 
-        .image-container {
-            width: 150px;
-            height: 150px;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+		.item {
+			width: 150px;
+			height: 170px;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: space-between;
+			background-color: #ffffff;
+			border: 1px solid #ddd;
+			border-radius: 5px;
+			box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+			margin: 10px;
+			text-align: center;
+			cursor: pointer;
+		}
 
-        .preview-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+		.image-container {
+			width: 150px;
+			height: 150px;
+			overflow: hidden;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
 
-        .image-text {
-            font-size: 14px;
-            font-weight: bold;
-            color: #333;
-            padding: 5px;
-            width: 100%;
-            background-color: #ffc9c9;
-        }
+		.preview-image {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
 
-        .items-area .item:hover {
-            background-color: #f8f9fa;
-        }
-        .custom-button{
-            background:#ffffff;
-            cursor:pointer;
-            font-family:"Poppins";
-            font-size:18px;
-        }
-        .custom-button:hover{
-            background:#E9ECEC;
-             cursor:pointer;
-            font-family:"Poppins";
-            font-size:18px;
-           
-        }
-        .image-logo{
-            width:100px;
-            height:80px;
-        }
-       
+		.image-text {
+			font-size: 14px;
+			font-weight: bold;
+			color: #333;
+			padding: 5px;
+			width: 100%;
+			background-color: #ffc9c9;
+		}
+
+		.items-area .item:hover {
+			background-color: #f8f9fa;
+		}
+
+		.custom-button {
+			background:white;
+			cursor: pointer;
+			padding-left:10px;
+			padding-right:10px;
+			margin:3px;
+			font-family: "Poppins";
+			font-size: 18px;
+			width:100%;
+		}
+
+			.custom-button:hover {
+				background: #E9ECEC;
+				cursor: pointer;
+				font-family: "Poppins";
+				font-size: 18px;
+			}
+
+		.image-logo {
+			width: 100px;
+			height: 80px;
+		}
 	</style>
 </head>
 
@@ -161,13 +166,13 @@
 	<!-- AppBar -->
 	<div class="appbar">
 		<div class="logo">POS</div>
-        <img src="~/Images/Logo.svg" class="image-logo" />
+		<img src="~/Images/Logo.svg" class="image-logo" />
 		<div class="dropdown">
 			<button class="btn btn-light  dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
 					aria-expanded="false">
 				Menu
 			</button>
-           
+
 			<ul class="dropdown-menu p-1" aria-labelledby="dropdownMenuButton">
 
 				<li><a class="dropdown-item" href="#">Orders</a></li>
@@ -179,28 +184,29 @@
 	</div>
 
 	<!-- Left Control Panel -->
-	<div class="left-control justify-content-between" >
-        <div class="widget" style=" flex-grow: 1;
-    overflow-y: auto;  
+	<div class="left-control justify-content-between">
+		<div class="widget" style=" flex-grow: 1;
+    overflow-y: auto;
     max-height: 250px;">
-        
-            <ul id="cart-items" class="cart-items"></ul>
-        </div>
 
-
-		<div class="widget">
-			<h5>Customer</h5>
+			<ul id="cart-items" class="cart-items"></ul>
 		</div>
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-               <a onclick="processOrder()" class=" btn custom-button large-text p-4" style="bottom:0;position:absolute; width:45%;color:dimgrey;">Order</a>
-            </div><div class="col-md-6">
-               
-                    <a onclick="processOrder()" class=" btn custom-button large-text p-4" style="bottom:0;position:absolute; width:45%;color:dimgrey;">Order</a>
-                
-            </div>
-        </div>
-		
+
+
+		<div class="widget justify-content-between align-items-center text-large" style="display:flex;">
+			
+					<div class="large-text">Total</div>
+				<div class="large-text">
+				<div id="total-bill-container" class="bill-container"> Rs 0</div>
+			</div>
+		</div>
+		<div class="justify-content-between" style="display:flex;bottom:0;position:absolute; width:95%;color:dimgrey;">
+				<a onclick="processOrder()" class=" btn custom-button large-text p-4" style="background:#BCCCDC;" >Order</a>
+
+				<a onclick="processOrder()" class=" btn custom-button large-text p-4">Order</a>
+
+		</div>
+
 	</div>
 
 	<!-- Items Area -->
@@ -208,67 +214,92 @@
 		<div class="row g-3 mt-3">
 			@foreach (var item in Model)
 			{
-                    <div class="item" onclick="addToCart('@item.Name', '@item.image_path', @item.Price)">
-                        <div class="image-container">
-                            <img src="@item.image_path" alt="Product Image" class="preview-image" />
-                        </div>
-                        <div class="image-text">
-                            @item.Name - Rs @item.Price
-                        </div>
-                    </div>
+				<div class="item" onclick="addToCart('@item.Name', '@item.image_path', @item.Price)">
+					<div class="image-container">
+						<img src="@item.image_path" alt="Product Image" class="preview-image" />
+					</div>
+					<div class="image-text">
+						@item.Name - Rs @item.Price
+					</div>
+				</div>
 			}
 		</div>
 	</div>
 
-    <script>
-        let cart = [];
+	<script>
+		let cart = [];
 
-        function addToCart(name, image, price) {
-            let existingItem = cart.find(item => item.name === name);
+		function addToCart(name, image, price) {
+			let existingItem = cart.find(item => item.name === name);
 
-            if (existingItem) {
-                existingItem.quantity++;
-            } else {
-                cart.push({ name, image, price, quantity: 1 });
-            }
+			if (existingItem) {
+				existingItem.quantity++;
+			} else {
+				cart.push({ name, image, price, quantity: 1 });
+			}
 
-            updateCart();
-        }
+			updateCart();
+		}
 
-        function updateCart() {
-            let cartContainer = document.getElementById("cart-items");
-            cartContainer.innerHTML = "";
+		function updateCart() {
+			let cartContainer = document.getElementById("cart-items");
+			cartContainer.innerHTML = "";
 
-            cart.forEach(item => {
-                let listItem = document.createElement("li");
-                listItem.classList.add("cart-item");
-                listItem.innerHTML = `
-                    
-                    <span>${item.name} x${item.quantity} - Rs ${item.price * item.quantity}</span>
-                    <button onclick="removeItem('${item.name}')" class="btn btn-sm btn-light">X</button>
-                `;
-                cartContainer.appendChild(listItem);
-            });
-        }
+			cart.forEach(item => {
+				let listItem = document.createElement("li");
+				listItem.classList.add("cart-item");
+				listItem.innerHTML = `
+					<span>${item.name} x${item.quantity} - Rs ${item.price * item.quantity}</span>
+					<button onclick="removeItem('${item.name}')" class="btn btn-sm btn-light">X</button>
+				`;
+				cartContainer.appendChild(listItem);
+			});
 
-        function removeItem(name) {
-            cart = cart.filter(item => item.name !== name);
-            updateCart();
-        }
+			// Update total bill inside the div
+			document.getElementById("total-bill-container").innerText = "Rs " + calculateTotal();
+		}
 
-        function processOrder() {
-            if (cart.length === 0) {
-                alert("No items in cart.");
-                return;
-            }
+		function calculateTotal() {
+			return cart.reduce((total, item) => total + item.price * item.quantity, 0);
+		}
 
-            console.log("Processing Order:", cart);
-            alert("Order placed successfully!");
+		function removeItem(name) {
+			cart = cart.filter(item => item.name !== name);
+			updateCart();
+		}
 
-            cart = [];
-            updateCart();
-        }
-    </script>
+		function processOrder() {
+			if (cart.length === 0) {
+				alert("No items in cart.");
+				return;
+			}
+
+			console.log("Processing Order:", cart);
+			alert("Order placed successfully!");
+
+			cart = [];
+			updateCart();
+		}
+			 function processOrder() {
+			if (cart.length === 0) {
+				alert("No items in cart.");
+				return;
+			}
+
+			// Send cart data to backend
+			fetch('/POS/PointOfSale', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify(cart)
+			}).then(response => {
+				if (response.ok) {
+					window.location.href = "/POS/OrderSummary";
+				}
+			}).catch(error => console.error("Error:", error));
+		}
+	</script>
 
 </body>
 </html>

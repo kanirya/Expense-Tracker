@@ -1,0 +1,46 @@
+﻿@model List<Expense_Tracker.Models.DTOs.ProductVM>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Order Summary</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Order Summary</h2>
+
+        @if (Model != null && Model.Count > 0)
+        {
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Name</td>
+                            <td>Rs @item.Price</td>
+                            <td>@item.Quantity</td>
+                            <td>Rs @(item.Price * item.Quantity)</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            <h3>Total: Rs @(Model.Sum(i => i.Price * i.Quantity))</h3>
+            <a href="/" class="btn btn-primary">Go Back</a>
+        }
+        else
+        {
+            <p>No items in the cart.</p>
+        }
+    </div>
+</body>
+</html>
