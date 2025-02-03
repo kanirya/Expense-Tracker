@@ -27,14 +27,14 @@
                         <tr>
                             <td>@item.Name</td>
                             <td>Rs @item.Price</td>
-                            <td>@item.Quantity</td>
-                            <td>Rs @(item.Price * item.Quantity)</td>
+                            <td>@item.quantity</td>
+                            <td>Rs @(item.Price * item.quantity)</td>
                         </tr>
                     }
                 </tbody>
             </table>
 
-            <h3>Total: Rs @(Model.Sum(i => i.Price * i.Quantity))</h3>
+            <h3>Total: Rs @(Model.Sum(i => i.Price * i.quantity))</h3>
             <a href="/" class="btn btn-primary">Go Back</a>
         }
         else
