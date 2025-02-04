@@ -1,13 +1,26 @@
 ﻿@model List<Expense_Tracker.Models.DTOs.ProductVM>
 
+    @{
+    }
 <!DOCTYPE html>
 <html>
 <head>
     <title>Order Summary</title>
+  
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+
+    <style>
+      
+    </style>
+
 </head>
+
 <body>
-    <div class="container mt-5">
+
+
+    <partial name="_POSPartial" />
+    
+    <div class="" style="margin-top:70px;"  >
         <h2>Order Summary</h2>
 
         @if (Model != null && Model.Count > 0)

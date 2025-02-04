@@ -10,6 +10,51 @@
 <script src="https://cdn.syncfusion.com/ej2/28.1.33/dist/ej2.min.js"></script>
 
 
-<script src="~/lib/jquery/dist/jquery.min.js"></script>
-<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<script src="~/js/site.js" asp-append-version="true"></script>
+
+<style>
+	.appbar {
+		position: fixed;
+		top: 0;
+		width: 100%;
+		height: 60px;
+		background-color: #ffffff;
+		border-bottom: 1px solid #ddd;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 0 20px;
+		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+		z-index: 1000;
+	}
+
+		.appbar .logo {
+			font-size: 20px;
+			font-weight: bold;
+			color: #333;
+		}
+
+	.image-logo {
+		width: 100px;
+		height: 80px;
+	}
+</style>
+
+<!-- AppBar -->
+<div class="appbar">
+	<div class="logo">POS</div>
+	<img src="~/Images/Logo.svg" class="image-logo" />
+	<div class="dropdown">
+		<button class="btn btn-light  dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
+				aria-expanded="false">
+			Menu
+		</button>
+
+		<ul class="dropdown-menu p-1" aria-labelledby="dropdownMenuButton">
+
+			<li><a class="dropdown-item" href="#">Orders</a></li>
+			<li class="dropdown-divider"></li>
+			<li><a class="dropdown-item" href="/POS">Backend</a></li>
+			<li><a class="dropdown-item" href="#">Settings</a></li>
+		</ul>
+	</div>
+</div>
