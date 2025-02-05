@@ -211,9 +211,10 @@
 
 	<!-- Items Area -->
 	<div class="items-area">
-		<div class="row g-3 mt-3">
+		<div class="row g-3 ">
 			@foreach (var item in Model)
 			{
+				<div class="col-sm-6 col-md-4 col-lg-3 col-xxl-2 ">
 				<div class="item" onclick="addToCart('@item.Name', '@item.image_path', @item.Price)">
 					<div class="image-container">
 						<img src="@item.image_path" alt="Product Image" class="preview-image" />
@@ -221,6 +222,7 @@
 					<div class="image-text">
 						@item.Name - Rs @item.Price
 					</div>
+				</div>
 				</div>
 			}
 		</div>

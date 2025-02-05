@@ -19,9 +19,18 @@
 	
 </head>
 <body>
-	<h1 class="large-text">Hello, Visual Studio!</h>
-	<div class="widget">
-		
+	<h1 class="large-text text-xl-end">Hello, Visual Studio!</h1>
+	<div class="container-sm justify-content-center" style="background:red;">hello</div>
+
+
+
+	<div class="row">
+		@{
+			for(int i=1;i<=12;i++){
+				<div class="widget col-md-6 col-lg-4 col-xl-3 col-xxl-2 p-3" style="background:red;"></div>
+			}
+		}
+		<div class="col"
 	</div>
 </body>
 </html>
