@@ -1,111 +1,27 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
-
-<style>
-
-    .animated-button {
-        padding: 10px 20px;
-        font-size: 16px;
-        color: white;
-        background-color: #007BFF;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        outline: none;
-        transition: all 0.3s ease-in-out;
-        position: relative;
-        overflow: hidden;
-    }
-    
-        /* Hover Effect */
-        .animated-button:hover {
-            background-color: #0056b3;
-            transform: scale(1.1);
-        }
-
-        /* Optional Shine Effect */
-        .animated-button::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: rgba(255, 255, 255, 0.3);
-            transform: rotate(45deg);
-            transition: all 0.5s;
-            opacity: 0;
-            z-index: 1;
-        }
-
-        .animated-button:hover::before {
-            opacity: 1;
-            top: 0%;
-            left: 0%;
-        }
-
-        /* Text on top */
-        .animated-button span {
-            position: relative;
-            z-index: 2;
-        }
-</style>
+﻿@{
+	ViewData["Title"] = "Dashboard";
+	var map = new Dictionary<string, string>
+	{
+		{"Dashboard","/Dashboard"},
+		{"Details","/Dashboard/DashboardDetails"}
+	};
+	ViewData["navButtons"] = map;
+}	
 
 
 
-<div class="row">
-    
-    
-    <div class="col-md-12 justify-content-center p-5 m-5">
-        <button class="btn animated-button">Button</button>
-    </div>
-</div>
-
-<div class="modal fade" id="locationModal" tabindex="-1" aria-labelledby="locationModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="position-relative">
-                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-z5OlZ3nVEilWLIKc6BIhSTxQT6We3W.png"
-                     class="w-100"
-                     style="height: 200px; object-fit: cover;"
-                     alt="Building exterior">
-            </div>
-            <div class="modal-body p-4">
-                <h5 class="modal-title mb-4" id="locationModalLabel">Welcome to TLC Altona North</h5>
-                <div class="d-grid gap-3">
-                    <button type="button" class="btn btn-outline-secondary text-start" onclick="useCurrentLocation()">
-                        <i class="bi bi-geo-alt me-2"></i>
-                        Use your location
-                    </button>
-                    <button type="button" class="btn btn-outline-secondary text-start" onclick="chooseLocation()">
-                        <i class="bi bi-compass me-2"></i>
-                        Choose another location
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-@section Scripts {
-    <script>
-        // Show modal on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            var modal = new bootstrap.Modal(document.getElementById('locationModal'));
-            modal.show();
-        });
-
-        function useCurrentLocation() {
-            // Implement location detection logic here
-            console.log('Getting current location...');
-        }
-
-        function chooseLocation() {
-            // Implement location selection logic here
-            console.log('Opening location selector...');
-        }
-    </script>
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>My Page</title>
+	
+</head>
+<body>
+	<h1 class="large-text">Hello, Visual Studio!</h>
+	<div class="widget">
+		
+	</div>
+</body>
+</html>
