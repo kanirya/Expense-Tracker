@@ -10,7 +10,6 @@ namespace Expense_Tracker.Controllers
     {
         private readonly ApplicationDbContext _context;
 
-        // Single constructor accepting ApplicationDbContext
         public POSController(ApplicationDbContext context)
         {
             _context = context;

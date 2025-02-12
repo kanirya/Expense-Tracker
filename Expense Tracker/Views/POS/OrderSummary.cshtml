@@ -48,7 +48,8 @@
             </table>
 
             <h3>Total: Rs @(Model.Sum(i => i.Price * i.quantity))</h3>
-            <a href="/" class="btn btn-primary">Go Back</a>
+            <a href="javascript:history.back()" class="btn btn-primary">Go Back</a>
+
         }
         else
         {
