@@ -1,22 +1,36 @@
 ﻿@{
 	ViewData["Title"] = "Dashboard";
+	ViewData["Name"] = "Learning | .NET";
 	var map = new Dictionary<string, string>
 	{
 		{"Dashboard","/Dashboard"},
 		{"Details","/Dashboard/DashboardDetails"}
 	};
 	ViewData["navButtons"] = map;
+	Layout = null;
+
 }	
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>My Page</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="author" content="Muhammad Danish" />
+	<meta name="description" content="This page content all things that I am learning how to
+	how to create as I learn ASP.NET core MVC with extra stuff like html, css, javascript, APIs and
+    Bootstrap" />
+	<title>@(ViewData["Name"] ?? "Expense Tracker")</title>
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+	<link href="https://cdn.syncfusion.com/ej2/28.1.33/bootstrap5-dark.css" rel="stylesheet" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="~/css/LearningSheet.css" asp-append-version="true" />
+	<link rel="stylesheet" href="~/Expense_Tracker.styles.css" asp-append-version="true" />
+	<script src="https://cdn.syncfusion.com/ej2/28.1.33/dist/ej2.min.js"></script>
+	
 </head>
 <body>
-	<h1 class="large-text text-xl-end">Hello, Visual Studio!</h1>
+	<h5 id="hhh" class="large-text">Hello, Visual Studio!</h5>
 	<div class="container-sm justify-content-center" style="background:red;">hello</div>
 	<div class="row">
 		@{

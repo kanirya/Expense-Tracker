@@ -33,10 +33,8 @@ namespace Expense_Tracker.Controllers
             {
                 return BadRequest("Cart is empty.");
             }
-
             // Save cart data to session
             HttpContext.Session.SetObjectAsJson("Cart", cartItems);
-
             return Ok();
         }
 

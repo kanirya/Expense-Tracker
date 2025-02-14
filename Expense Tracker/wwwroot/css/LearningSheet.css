@@ -1,0 +1,29 @@
+﻿html{
+    font-size:22px;
+}
+body {
+    background-color:#333;
+    color:whitesmoke;
+
+}
+h1 {
+    font-family: "Poppins";
+}
+
+h2 {
+    font-family: "Poppins";
+}
+
+h3 {
+    font-family: "Poppins";
+    
+}
+
+h4 {
+    font-family: "Poppins";
+}
+
+h5 {
+    font-family: "Poppins";
+    font-weight:bold;
+}
