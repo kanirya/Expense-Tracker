@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace Expense_Tracker.Models.DTOs
 {
@@ -14,4 +15,10 @@ namespace Expense_Tracker.Models.DTOs
 
         public IFormFile Photo { get; set; } = null!;
     }
+}
+
+
+public abstract class global
+{
+    public static string name = "Danish";
 }

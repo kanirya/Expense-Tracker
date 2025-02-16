@@ -9,7 +9,7 @@
 	ViewData["navButtons"] = map;
 	Layout = null;
 
-}	
+}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,34 +27,75 @@
 	<link rel="stylesheet" href="~/css/LearningSheet.css" asp-append-version="true" />
 	<link rel="stylesheet" href="~/Expense_Tracker.styles.css" asp-append-version="true" />
 	<script src="https://cdn.syncfusion.com/ej2/28.1.33/dist/ej2.min.js"></script>
-	
+
 </head>
 
 
 
 <body>
-	<h5 id="hhh" class="large-text">Hello, Visual Studio!</h5>
-	<hr />
-	<p>This page is only for learning purpose.
-		<br />I will implement everything that I will learn.
-	</p>
-	<hr />
-	<p class="custom">
-		This page is only for learning purpose.
-		<em>how are you </em>
-		<strong>how are you </strong>
-		
-		<abbr title="hey how are you doing">whatsup</abbr>
-		
-		<br />I will implement everything that I will learn.
-	</p>
-	<address>Islamabad Pakistan</address>
 
-	
-	<!-- hey this is comment-->
-	
-	
-</body>		
+	<div class="appbar d-flex align-items-center px-3" style="">
+		<div class="">	<h5 style="font-size:22px;color:white;">Learning</h5></div>
+		<div class="btn-group mx-5">
+			<a href="#intro" class="btn btn-secondary btn-sm">Intro</a>
+			<a href="#details" class="btn btn-secondary btn-sm">Details</a>
+			<a href="#last" class="btn btn-secondary btn-sm">last</a>
+		</div>
+
+	</div>
+
+	<section id="intro">
+
+
+
+		<h5 id="hhh" class="large-text">Hello, Visual Studio!</h5>
+		<hr />
+		<p>
+			This page is only for learning purpose.
+			<br />I will implement everything that I will learn.
+		</p>
+	</section>
+	<hr />
+	<section id="details">
+		<p class="custom">
+			This page is only for learning purpose.
+			<em>how are you </em>
+			<strong>how are you </strong>
+
+			<abbr title="hey how are you doing">whatsup</abbr>
+
+			<br />I will implement everything that I will learn.
+		</p>
+		<address>Islamabad Pakistan</address>
+	</section>
+	<hr />
+	<section id="last">
+		<p class="text-center">
+			click here for me My
+			<a href="https://www.github.com/kanirya">
+				<abbr title="https://www.github.com/kanirya">Gihub</abbr>
+			</a> Accoun
+		</p>
+		<div class="text-center">
+			<a class="btn btn-secondary btn-sm" asp-action="Index">click me </a>
+
+		</div>
+	</section>
+	<div class="text-center">
+
+		<abbr title="Download ke icon">
+			<a href="~/profile.jpg"download="true">Download Icon</a>
+		</abbr>
+
+	</div>
+	<div class="text-center">
+		<a href="mailto:codewithartist1@gmail.com"><i class="fa-solid fa-email">Email</i></a>
+	</div>
+	<h4>
+			@global.name.ToString()
+	</h4>
+	<a href="#">back to top</a>
+</body>
 
 
 </html>
