@@ -13,6 +13,7 @@ namespace Expense_Tracker.Models
         public DbSet<Category> Categories { get; set; }
         public DbSet<Expense_Tracker.Models.Employee> Employee { get; set; } = default!;
         public DbSet<Product> Product { get; set; }
+        public DbSet<Room> Rooms { get; set; }
 
         
 

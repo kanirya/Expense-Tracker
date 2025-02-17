@@ -22,7 +22,7 @@ namespace Expense_Tracker.Controllers
         // GET: Product
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Product.ToListAsync());
+            return View(await _context.Product.OrderBy(i=>i.Name).ToListAsync());
         }
 
         // GET: Product/Details/5

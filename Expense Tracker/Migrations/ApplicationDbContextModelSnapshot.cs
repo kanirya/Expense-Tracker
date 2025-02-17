@@ -73,77 +73,50 @@ namespace Expense_Tracker.Migrations
 
             modelBuilder.Entity("Expense_Tracker.Models.Product", b =>
                 {
-                    b.Property<int>("ProductId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductId"));
-
-                    b.Property<string>("Barcode")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Category")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal>("CostPrice")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<int>("ForecastedQuantity")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ImagePath")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
-
-                    b.Property<string>("InternalReference")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("ProductType")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("QuantityOnHand")
+                    b.Property<int>("Price")
                         .HasColumnType("int");
 
-                    b.Property<decimal>("SalesPrice")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("Taxes")
+                    b.Property<string>("image_path")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("TrackBySerialNumber")
-                        .HasColumnType("bit");
+                    b.HasKey("Id");
 
-                    b.Property<string>("Vendor")
+                    b.ToTable("Product");
+                });
+
+            modelBuilder.Entity("Expense_Tracker.Models.Room", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("RoomNo")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(50)");
 
-                    b.Property<decimal>("Volume")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<string>("floor")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(50)");
 
-                    b.Property<DateTime?>("WarrantyEndDate")
-                        .HasColumnType("datetime2");
+                    b.Property<int>("seats")
+                        .HasColumnType("int");
 
-                    b.Property<decimal>("Weight")
-                        .HasColumnType("decimal(18,2)");
+                    b.HasKey("Id");
 
-                    b.HasKey("ProductId");
-
-                    b.HasIndex("InternalReference")
-                        .IsUnique();
-
-                    b.ToTable("Products");
+                    b.ToTable("Rooms");
                 });
 
             modelBuilder.Entity("Expense_Tracker.Models.Transaction", b =>

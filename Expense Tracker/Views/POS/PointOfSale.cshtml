@@ -204,7 +204,8 @@
 			</div>
 		</div>
 		<div class="justify-content-between" style="display:flex;bottom:0;position:absolute; width:95%;color:dimgrey;">
-			<a onclick="processOrder()" class=" btn custom-button large-text p-4" style="background:#9AA6B2;">Order</a>
+			
+			<a onclick="processOrder()" class=" btn custom-button  large-text p-4" style="background:#9AA6B2;">Order</a>
 
 			<a onclick="processOrder()" class=" btn custom-button large-text p-4" style="background:white;">Payment</a>
 
@@ -220,7 +221,7 @@
 				<div class="col-sm-6 col-md-4 col-lg-3 col-xxl-2 ">
 					<div class="item" onclick="addToCart('@item.Name', '@item.image_path', @item.Price)">
 						<div class="image-container">
-							<img src="@item.image_path" alt="Product Image" class="preview-image" />
+							<img loading="lazy" src="@item.image_path" alt="@item.Name" class="preview-image" title="Product : @item.Name" />
 						</div>
 						<div class="image-text">
 							@item.Name - Rs @item.Price

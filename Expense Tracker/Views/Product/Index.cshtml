@@ -28,7 +28,7 @@
                         <!-- Card Image -->
                         @if (!string.IsNullOrEmpty(item.image_path))
                         {
-                            <img src="@item.image_path" alt="Product Image" class="card-img-top img-fluid" style="height: 200px; object-fit: cover;" />
+                            <img loading="lazy" src="@item.image_path" alt="Product Image" class="card-img-top img-fluid" style="height: 200px; object-fit: cover;" />
                         }
                         else
                         {
