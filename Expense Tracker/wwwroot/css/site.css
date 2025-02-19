@@ -528,7 +528,7 @@ textarea {
         }
 
         .employee-table tbody tr:hover {
-            background-color: #333348; /* Highlighted background on hover */
+            background-color: var(--blue-light); /* Highlighted background on hover */
             transform: scale(1.02); /* Subtle zoom effect */
             cursor: pointer;
             transition: transform 0.3s ease, background 0.3s ease;
