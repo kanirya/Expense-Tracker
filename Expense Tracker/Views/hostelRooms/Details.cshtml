@@ -1,4 +1,4 @@
-﻿@model Expense_Tracker.Models.Room
+﻿@model Expense_Tracker.Models.hostelRoom
 
 @{
     ViewData["Title"] = "Details";
@@ -8,14 +8,14 @@
 <h1>Details</h1>
 
 <div>
-    <h4>Room</h4>
+    <h4>hostelRoom</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.RoomNo)
+            @Html.DisplayNameFor(model => model.roomNo)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.RoomNo)
+            @Html.DisplayFor(model => model.roomNo)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.floor)

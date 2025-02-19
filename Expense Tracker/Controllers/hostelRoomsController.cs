@@ -9,85 +9,87 @@ using Expense_Tracker.Models;
 
 namespace Expense_Tracker.Controllers
 {
-    public class RoomsController : Controller
+    public class hostelRoomsController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public RoomsController(ApplicationDbContext context)
+        public hostelRoomsController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: Rooms
+        // GET: hostelRooms
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Rooms.ToListAsync());
+            var Rooms = await _context.hostelRoom.OrderBy(i => i.floor).ToListAsync();
+            return View(Rooms);
         }
 
-        // GET: Rooms/Details/5
-        public async Task<IActionResult> Details(int? id)
+        // GET: hostelRooms/Details/5
+        public async Task<IActionResult> Details(Guid? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var room = await _context.Rooms
+            var hostelRoom = await _context.hostelRoom
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (room == null)
+            if (hostelRoom == null)
             {
                 return NotFound();
             }
 
-            return View(room);
+            return View(hostelRoom);
         }
 
-        // GET: Rooms/Create
+        // GET: hostelRooms/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Rooms/Create
+        // POST: hostelRooms/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,RoomNo,floor,seats")] Room room)
+        public async Task<IActionResult> Create([Bind("Id,roomNo,floor,seats")] hostelRoom hostelRoom)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(room);
+                hostelRoom.Id = Guid.NewGuid();
+                _context.Add(hostelRoom);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(room);
+            return View(hostelRoom);
         }
 
-        // GET: Rooms/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        // GET: hostelRooms/Edit/5
+        public async Task<IActionResult> Edit(Guid? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var room = await _context.Rooms.FindAsync(id);
-            if (room == null)
+            var hostelRoom = await _context.hostelRoom.FindAsync(id);
+            if (hostelRoom == null)
             {
                 return NotFound();
             }
-            return View(room);
+            return View(hostelRoom);
         }
 
-        // POST: Rooms/Edit/5
+        // POST: hostelRooms/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,RoomNo,floor,seats")] Room room)
+        public async Task<IActionResult> Edit(Guid id, [Bind("Id,roomNo,floor,seats")] hostelRoom hostelRoom)
         {
-            if (id != room.Id)
+            if (id != hostelRoom.Id)
             {
                 return NotFound();
             }
@@ -96,12 +98,12 @@ namespace Expense_Tracker.Controllers
             {
                 try
                 {
-                    _context.Update(room);
+                    _context.Update(hostelRoom);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!RoomExists(room.Id))
+                    if (!hostelRoomExists(hostelRoom.Id))
                     {
                         return NotFound();
                     }
@@ -112,45 +114,45 @@ namespace Expense_Tracker.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(room);
+            return View(hostelRoom);
         }
 
-        // GET: Rooms/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        // GET: hostelRooms/Delete/5
+        public async Task<IActionResult> Delete(Guid? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var room = await _context.Rooms
+            var hostelRoom = await _context.hostelRoom
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (room == null)
+            if (hostelRoom == null)
             {
                 return NotFound();
             }
 
-            return View(room);
+            return View(hostelRoom);
         }
 
-        // POST: Rooms/Delete/5
+        // POST: hostelRooms/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(Guid id)
         {
-            var room = await _context.Rooms.FindAsync(id);
-            if (room != null)
+            var hostelRoom = await _context.hostelRoom.FindAsync(id);
+            if (hostelRoom != null)
             {
-                _context.Rooms.Remove(room);
+                _context.hostelRoom.Remove(hostelRoom);
             }
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool RoomExists(int id)
+        private bool hostelRoomExists(Guid id)
         {
-            return _context.Rooms.Any(e => e.Id == id);
+            return _context.hostelRoom.Any(e => e.Id == id);
         }
     }
 }
